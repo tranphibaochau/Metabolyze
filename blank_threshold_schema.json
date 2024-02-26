@@ -1,0 +1,35 @@
+{
+  "node_title": "Blank Threshold  ",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "input_file",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "columns",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "min_signal",
+      "type": "number",
+      "value": "10000"
+    },
+    {
+      "name": "signal_to_noise",
+      "type": "number",
+      "value": "3"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "blank_threshold",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

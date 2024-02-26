@@ -1,0 +1,33 @@
+{
+  "node_title": "Calculate t-test Two Groups",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Group ID File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Group 1",
+      "type": "text"
+    },
+    {
+      "name": "Group 2",
+      "type": "text"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "statistical_ttest",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

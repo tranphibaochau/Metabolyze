@@ -1,0 +1,34 @@
+{
+  "node_title": "Impute Table",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Blank Threshold File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Sample Columns File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Imputation Method",
+      "type": "list",
+      "value": "impute_with_zero",
+      "options": [
+        "impute_with_zero",
+        "impute_with_blank_threshold"
+      ]
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "imputed_tables",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
