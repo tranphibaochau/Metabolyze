@@ -151,7 +151,6 @@ class Analysis:
         ids = self.get_ids('ID')
     
         for x, y in ids.items():
-            #print(x,y)
             result.rename(columns={x: y}, inplace=True)
             # Returns matrix based on inputted IDS
         return result
@@ -262,7 +261,7 @@ class Analysis:
         new_final.columns = list(full_matrix)
 
         detection_df = pd.DataFrame(list(detection_dict.items()))
-        detection_df.columns = ['Metabolite','Detection']
+        detection_df.columns = ['Metabolite', 'Detection']
         detection_df.index = detection_df['Metabolite']
 
         compiled = new_final.join(merged_df, how='outer')

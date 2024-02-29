@@ -11,23 +11,22 @@
       "socket_type": "one_to_one"
     },
     {
-      "name": "Sample Columns File",
-      "type": "socket",
-      "socket_type": "one_to_one"
-    },
-    {
       "name": "Imputation Method",
       "type": "list",
-      "value": "impute_with_zero",
+      "value": "impute_with_threshold",
       "options": [
-        "impute_with_zero",
-        "impute_with_blank_threshold"
+        "impute_with_blank_threshold",
+        "impute_with_zero"
       ]
     }
   ],
   "output_sockets": [
     {
       "name": "imputed_tables",
+      "socket_type": "one_to_many"
+    },
+    {
+      "name": "marked_tables",
       "socket_type": "one_to_many"
     }
   ]

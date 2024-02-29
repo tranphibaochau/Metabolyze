@@ -4,9 +4,10 @@ import numpy as np
 import itertools
 import scipy
 from scipy.stats import ttest_ind
+import sys
 
 
-def t_test(input_file, group_ids, group1, group2):
+def t_test(input_file, group_ids, ):
     print("\n")
     print("============================================")
     print(f"Calculating t-test between {group1} and {group2}:")
@@ -31,10 +32,16 @@ def t_test(input_file, group_ids, group1, group2):
         second = grp2.iloc[i]
         p_value = ttest_ind(first, second)[1]
         p_values.append(p_value)
-    col_name = "".join(group1.split(" ")) + "_vs_" + "".join(group2.split(" ")) + "_ttest_pval"
+    col_name = "".join(group1.split(" ")) + "_vs_" + "".join(group2.split(" ")) + "_ttest_pval"  # column name to store p-value
     df[col_name] = p_values
     df.fillna({col_name: "NA"}, inplace=True)  # replace NaN values with NA for readability
     df.to_csv(f"{os.getcwd()}/output/statistical_ttest/t_test.quantified", sep="\t", index=False)
 
 
-t_test("C:\\Users\\cpt289\\Downloads\\test_files\\df_table_imputed2.quantified", "C:\\Users\\cpt289\\Downloads\\test_files\\Groups.tsv", "Light Roast", "Dark Roast")
+input_file = sys.argv[1]
+group_ids = sys.argv[2]
+group1 = sys.argv[3]
+group2 = sys.argv[4]
+t_test(input_file, group_ids, group1, group2)
+# t_test("C:\\Users\\cpt289\\Downloads\\test_files\\df_table_imputed2.quantified",
+# "C:\\Users\\cpt289\\Downloads\\test_files\\Groups.tsv", "Light Roast", "Dark Roast")
