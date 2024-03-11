@@ -13,7 +13,7 @@
     {
       "name": "Imputation Method",
       "type": "list",
-      "value": "impute_with_threshold",
+      "value": "impute_with_blank_threshold",
       "options": [
         "impute_with_blank_threshold",
         "impute_with_zero"
