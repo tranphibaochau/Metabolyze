@@ -35,7 +35,7 @@ def impute_table(input_file, impute_method="impute_with_blank_threshold"):
     for col in imputed_df.columns:
         if col != "blank_threshold":
             impute(imputed_df, col, impute_method)
-            marked_df[col] = impute(marked_df, col)
+            impute(marked_df, col)
 
     marked_df.drop(['blank_threshold'], axis=1, inplace=True)  # drop the comparison column
     imputed_df.drop(['blank_threshold'], axis=1, inplace=True)

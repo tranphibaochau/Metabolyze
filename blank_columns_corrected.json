@@ -1,0 +1,20 @@
+{
+  "node_title": "Correct Blank Columns",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "blank_columns_corrected",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

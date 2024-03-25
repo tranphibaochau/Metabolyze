@@ -7,13 +7,32 @@ from scipy.stats import ttest_ind
 import sys
 
 
-def t_test(input_file, group_ids, ):
+def get_group_names(group_ids, original_name=False):
+    try:
+        groups = pd.read_table(group_ids, sep="\t")
+    except Exception as e:
+        raise "Cannot read input file: " + str(e)
+
+    group_dict = {}
+    unique_groups = [x for x in groups.Group.unique() if x !="Blank"]
+    if original_name:
+        for n in unique_groups:
+            original_column_names = groups.loc[groups.Group == n].File.values.tolist()
+            group_dict[n] = original_column_names
+    else:
+        for n in unique_groups:
+            ids = groups.loc[groups.Group == n].id.values.tolist()
+            group_dict[n] = ids
+    return group_dict
+
+
+def t_test(input_file, group_ids):
     print("\n")
     print("============================================")
     print(f"Calculating t-test between {group1} and {group2}:")
 
     # check if the groups are in group_ids file
-    groups = pd.read_csv(group_ids, sep='\t')
+    groups = get_group_names(group_ids)
     unique_groups = [x for x in groups.Group.unique() if x != 'Blank']
     if group1 not in unique_groups or group2 not in unique_groups:
         raise ValueError("Group not found! Please look at the group_ids file to find the correct groups.")
