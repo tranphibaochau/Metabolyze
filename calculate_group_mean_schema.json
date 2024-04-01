@@ -1,33 +1,24 @@
 {
-  "node_title": "Merge Columns (Two Tables)",
+  "node_title": "Calculate Group Means",
   "node_type": "dataProcessingNode",
   "script_file_type": "python",
   "command":"python3",
   "script_file_suffix": "py",
   "parameters": [
     {
-      "name": "Table 1 File",
+      "name": "Input File",
       "type": "socket",
       "socket_type": "one_to_one"
     },
     {
-      "name": "Table 2 File",
+      "name": "Group IDs File",
       "type": "socket",
       "socket_type": "one_to_one"
-    },
-    {
-      "name": "Left Most Table",
-      "type": "list",
-      "value": "Table 1",
-      "options": [
-        "Table 1",
-        "Table 2"
-      ]
     }
   ],
   "output_sockets": [
     {
-      "name": "merge_columns",
+      "name": "group_means",
       "socket_type": "one_to_many"
     }
   ]

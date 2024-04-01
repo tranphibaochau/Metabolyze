@@ -411,7 +411,7 @@ class Analysis:
             
             #print(comparison_ids)
             
-            pca_matrix =  reduce(lambda left,right: pd.merge(left,right,left_index=True, right_index=True), matrices)
+            pca_matrix = reduce(lambda left,right: pd.merge(left,right,left_index=True, right_index=True), matrices)
             #pca_matrix = pd.DataFrame(pca_matrix).set_index('Metabolite')
             pca_matrix.index.name = 'Metabolite'
 
