@@ -26,13 +26,16 @@ def impute_table(input_file, impute_method="impute_with_blank_threshold"):
 
     if 'blank_threshold' not in imputed_df.columns:
         raise KeyError("blank_threshold column not found in input_file, please merge it into the dataframe!")
+    standard_columns = [x for x in imputed_df.columns if x.startswith('S') and x != 'blank_threshold' and "blank" not in x.lower()]
+
+
 
     if impute_method == "impute_with_blank_threshold":
         print("Imputing with blank threshold")
     else:
         print("Imputing with zero")
 
-    for col in imputed_df.columns:
+    for col in standard_columns:
         if col != "blank_threshold":
             impute(imputed_df, col, impute_method)
             impute(marked_df, col)

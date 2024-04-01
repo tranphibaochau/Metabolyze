@@ -15,7 +15,7 @@ def get_group_names(group_ids, original_name=False):
 
     group_dict = {}
     unique_groups = [x for x in groups.Group.unique() if x !="Blank"]
-    if original_name:
+    if not original_name:
         for n in unique_groups:
             original_column_names = groups.loc[groups.Group == n].File.values.tolist()
             group_dict[n] = original_column_names
@@ -26,42 +26,54 @@ def get_group_names(group_ids, original_name=False):
     return group_dict
 
 
-def t_test(input_file, group_ids):
-    print("\n")
-    print("============================================")
-    print(f"Calculating t-test between {group1} and {group2}:")
+def get_unique_comparisons(group_dict, reverse=True):
+    unique_groups = list(group_dict.keys())
+    unique_comparisons = []
+    for L in range(0, len(unique_groups) + 1):
+        for subset in itertools.combinations(unique_groups, L):
+            if len(subset) == 2:
+                unique_comparisons.append(subset)
+    # compare both group1 vs. group2 and group2 vs group1`
+    reversed_groups = []
+    for comparison in unique_comparisons:
+        reversed_comparison = tuple(reversed(comparison))
+        reversed_groups.append(reversed_comparison)
 
+    if (type(reverse) is bool and reverse is True):
+        unique_comparisons = unique_comparisons + reversed_groups
+
+    return unique_comparisons
+
+
+def t_test(input_file, group_ids, reverse=True):
     # check if the groups are in group_ids file
     groups = get_group_names(group_ids)
-    unique_groups = [x for x in groups.Group.unique() if x != 'Blank']
-    if group1 not in unique_groups or group2 not in unique_groups:
-        raise ValueError("Group not found! Please look at the group_ids file to find the correct groups.")
-
+    unique_comparisons = get_unique_comparisons(groups, reverse)
     df = pd.read_csv(input_file, sep='\t')
-    # find the list of all columns within each group
-    group1_columns = groups.loc[groups.Group == group1]['File'].tolist()
-    group2_columns = groups.loc[groups.Group == group2]['File'].tolist()
-    # create sub dataframe for each group before calculating p_values
-    grp1 = df[group1_columns]
-    grp2 = df[group2_columns]
+    for (group1, group2) in unique_comparisons:
+        # find the list of all columns within each group
+        group1_columns = groups[group1]
+        group2_columns = groups[group2]
+        # create sub dataframe for each group before calculating p_values
+        grp1 = df[group1_columns]
+        grp2 = df[group2_columns]
 
-    p_values = []
-    for i, row in grp1.iterrows():
-        first = grp1.iloc[i]
-        second = grp2.iloc[i]
-        p_value = ttest_ind(first, second)[1]
-        p_values.append(p_value)
-    col_name = "".join(group1.split(" ")) + "_vs_" + "".join(group2.split(" ")) + "_ttest_pval"  # column name to store p-value
-    df[col_name] = p_values
-    df.fillna({col_name: "NA"}, inplace=True)  # replace NaN values with NA for readability
-    df.to_csv(f"{os.getcwd()}/output/statistical_ttest/t_test.quantified", sep="\t", index=False)
+        p_values = []
+        for i, row in grp1.iterrows():
+            first = grp1.iloc[i]
+            second = grp2.iloc[i]
+            p_value = ttest_ind(first, second)[1]
+            p_values.append(p_value)
+        col_name = "".join(group1.split(" ")) + "_vs_" + "".join(group2.split(" ")) + "_ttest_pval"  # column name to store p-value
+        df[col_name] = p_values
+        df.fillna({col_name: "NA"}, inplace=True)  # replace NaN values with NA for readability
+    df.to_csv("t_test.quantified", sep="\t", index=False)
 
 
-input_file = sys.argv[1]
-group_ids = sys.argv[2]
-group1 = sys.argv[3]
-group2 = sys.argv[4]
+#input_file = sys.argv[1]
+#group_ids = sys.argv[2]
+#reverse = sys.argv[3]
 
-t_test(input_file, group_ids, group1, group2)
-# t_test("C:\\Users\\cpt289\\Downloads\\test_files\\df_table_imputed2.quantified",
+#t_test(input_file, group_ids, reverse)
+t_test("skeleton_coffee.quantified","Groups.tsv")
 # "C:\\Users\\cpt289\\Downloads\\test_files\\Groups.tsv", "Light Roast", "Dark Roast")

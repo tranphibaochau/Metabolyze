@@ -16,12 +16,13 @@
       "socket_type": "one_to_one"
     },
     {
-      "name": "Group 1",
-      "type": "text"
-    },
-    {
-      "name": "Group 2",
-      "type": "text"
+      "name": "Reverse Comparison",
+      "type": "list",
+      "value": "True",
+      "options": [
+        "True",
+        "False"
+      ]
     }
   ],
   "output_sockets": [
