@@ -1,6 +1,9 @@
 import pandas as pd
 import sys
 import os
+
+
+# correct all blank columns to be 0
 def correct_blank_columns(input_file):
     df = pd.read_csv(input_file, index_col=0)
     df[:] = 0

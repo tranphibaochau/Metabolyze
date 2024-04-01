@@ -1,5 +1,5 @@
 {
-  "node_title": "Calculate t-test p-value",
+  "node_title": "Calculate Fold Change",
   "node_type": "dataProcessingNode",
   "script_file_type": "python",
   "command":"python3",
@@ -23,11 +23,20 @@
         "True",
         "False"
       ]
+    },
+    {
+      "name": "Calculate Log 2 Fold Change",
+      "type": "list",
+      "value": "True",
+      "options": [
+        "True",
+        "False"
+      ]
     }
   ],
   "output_sockets": [
     {
-      "name": "statistical_ttest",
+      "name": "Fold Change",
       "socket_type": "one_to_many"
     }
   ]

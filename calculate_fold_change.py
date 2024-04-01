@@ -1,9 +1,8 @@
-import os
 import pandas as pd
 import numpy as np
-import itertools
-from scipy.stats import ttest_ind
 import sys
+import os
+import itertools
 
 
 def get_group_names(group_ids, original_name=False):
@@ -44,7 +43,8 @@ def get_unique_comparisons(group_dict, reverse=True):
     return unique_comparisons
 
 
-def t_test(input_file, group_ids, reverse=True):
+def calculate_log_fold_change(input_file, group_ids, reverse=True, log2fold=True):
+
     # check if the groups are in group_ids file
     groups = get_group_names(group_ids)
     unique_comparisons = get_unique_comparisons(groups, reverse)
@@ -53,24 +53,23 @@ def t_test(input_file, group_ids, reverse=True):
         # find the list of all columns within each group
         group1_columns = groups[group1]
         group2_columns = groups[group2]
-        # create sub dataframe for each group before calculating p_values
-        grp1 = df[group1_columns]
-        grp2 = df[group2_columns]
+        col_log_fold = "".join(group1.split(" ")) + "_vs_" + "".join(
+            group2.split(" ")) + "_LogFoldChange"  # column name to store Log Fold Change
+        col_log2_fold = "".join(group1.split(" ")) + "_vs_" + "".join(
+            group2.split(" ")) + "_Log2FoldChange"  # column name to store Log 2 Fold Change
+        df[col_log_fold] = df[group1_columns].mean(axis=1)/df[group2_columns].mean(axis=1)
+        df.fillna({col_log_fold: "NA"}, inplace=True)  # replace NaN values with NA for readability
+        if log2fold:
+            df[col_log2_fold] = np.log2(df[col_log_fold])
+            df.fillna({col_log2_fold: "NA"}, inplace=True)  # replace NaN values with NA for readability
 
-        p_values = []
-        for i, row in grp1.iterrows():
-            first = grp1.iloc[i]
-            second = grp2.iloc[i]
-            p_value = ttest_ind(first, second)[1]
-            p_values.append(p_value)
-        col_name = "".join(group1.split(" ")) + "_vs_" + "".join(group2.split(" ")) + "_ttest_pval"  # column name to store p-value
-        df[col_name] = p_values
-        df.fillna({col_name: "NA"}, inplace=True)  # replace NaN values with NA for readability
-    df.to_csv(f"{os.getcwd()}/output/ttest_pval/ttest_pval.quantified", sep="\t", index=False)
+
+    df.to_csv(f"{os.getcwd()}/output/fold_change/fold_change.quantified", sep="\t", index=False)
+    return
 
 
 input_file = sys.argv[1]
 group_ids = sys.argv[2]
 reverse = sys.argv[3]
-
-t_test(input_file, group_ids, reverse)
+log2fold = sys.argv[4]
+calculate_log_fold_change(input_file, group_ids, reverse, log2fold)

@@ -1,8 +1,6 @@
 import os
 import pandas as pd
-import numpy as np
 import itertools
-from scipy.stats import ttest_ind
 import sys
 
 
@@ -40,37 +38,27 @@ def get_unique_comparisons(group_dict, reverse=True):
 
     if (type(reverse) is bool and reverse is True):
         unique_comparisons = unique_comparisons + reversed_groups
-
+    elif (type(reverse) is str and reverse=="True"):
+        unique_comparisons = unique_comparisons + reversed_groups
     return unique_comparisons
 
 
-def t_test(input_file, group_ids, reverse=True):
+def calculate_combined_mean(input_file, group_ids, reverse=True):
     # check if the groups are in group_ids file
     groups = get_group_names(group_ids)
     unique_comparisons = get_unique_comparisons(groups, reverse)
     df = pd.read_csv(input_file, sep='\t')
     for (group1, group2) in unique_comparisons:
-        # find the list of all columns within each group
-        group1_columns = groups[group1]
-        group2_columns = groups[group2]
-        # create sub dataframe for each group before calculating p_values
-        grp1 = df[group1_columns]
-        grp2 = df[group2_columns]
-
-        p_values = []
-        for i, row in grp1.iterrows():
-            first = grp1.iloc[i]
-            second = grp2.iloc[i]
-            p_value = ttest_ind(first, second)[1]
-            p_values.append(p_value)
-        col_name = "".join(group1.split(" ")) + "_vs_" + "".join(group2.split(" ")) + "_ttest_pval"  # column name to store p-value
-        df[col_name] = p_values
-        df.fillna({col_name: "NA"}, inplace=True)  # replace NaN values with NA for readability
-    df.to_csv(f"{os.getcwd()}/output/ttest_pval/ttest_pval.quantified", sep="\t", index=False)
-
+        group1_mean_col = group1.replace(" ", "") + "_mean"
+        group2_mean_col = group2.replace(" ", "") + "_mean"
+        if group1_mean_col not in df.columns or group2_mean_col not in df.columns:
+            raise Exception(group1_mean_col + " or " + group2_mean_col + " not found in input file")
+        combined_mean_col = group1.replace(" ", "") + "_vs_" + group2.replace(" ", "") + "_combined_mean"
+        df[combined_mean_col] = df[group1_mean_col] + df[group2_mean_col]
+    df.to_csv(f"{os.getcwd()}/output/combined_mean/combined_mean.quantified", sep="\t", index=False)
 
 input_file = sys.argv[1]
 group_ids = sys.argv[2]
 reverse = sys.argv[3]
 
-t_test(input_file, group_ids, reverse)
+calculate_combined_mean(input_file, group_ids, reverse)

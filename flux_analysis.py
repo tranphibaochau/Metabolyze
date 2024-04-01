@@ -26,10 +26,10 @@ def flux_analysis(input_file):
                         raise ValueError(df.loc[i, col], df.loc[original_row, col])
     for col in columns:
         df.loc[original_row, col] = 100
-    df.to_csv("skeleton_1600.quantified", sep="\t", index=False)
+    df.to_csv(f"{os.getcwd()}/output/flux_analysis/flux_analysis.quantified", sep="\t", index=False)
 
 
-#input_file = sys.argv[1]
+input_file = sys.argv[1]
 
-flux_analysis("imputed_table.quantified")
+flux_analysis(input_file)
 

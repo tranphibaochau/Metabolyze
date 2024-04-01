@@ -491,7 +491,7 @@ class Analysis:
             
             final_df_m = self.sequence2id(final_df_m)
             
-            final_df_m['combined_mean'] = (final_df_m[comparison[0]+'_Mean']+final_df_m[comparison[1]+'_Mean'])/2
+            final_df_m['combined_mean'] = (final_df_m[s[0]+'_Mean']+final_df_m[comparison[1]+'_Mean'])/2
             final_df_m['impact_score'] = (((2**abs(final_df_m['Log2FoldChange']))*final_df_m['combined_mean'])/final_df_m['ttest_pval'])/1000000
             final_df_m.impact_score = final_df_m.impact_score.round()
             final_df_m['impact_score'] = final_df_m['impact_score'].fillna(0)

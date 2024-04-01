@@ -1,5 +1,5 @@
 {
-  "node_title": "Calculate t-test p-value",
+  "node_title": "Calculate Fold Change",
   "node_type": "dataProcessingNode",
   "script_file_type": "python",
   "command":"python3",
@@ -27,7 +27,7 @@
   ],
   "output_sockets": [
     {
-      "name": "statistical_ttest",
+      "name": "Combined Mean",
       "socket_type": "one_to_many"
     }
   ]
