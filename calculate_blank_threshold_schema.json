@@ -1,5 +1,5 @@
 {
-  "node_title": "Select Columns",
+  "node_title": "Calculate Blank Threshold",
   "node_type": "dataProcessingNode",
   "script_file_type": "python",
   "command":"python3",
@@ -11,14 +11,19 @@
       "socket_type": "one_to_one"
     },
     {
-      "name": "Groups File",
-      "type": "socket",
-      "socket_type": "one_to_one"
+      "name": "Signal To Noise",
+      "type": "number",
+      "value": "3"
+    },
+    {
+      "name": "Min Signal",
+      "type": "number",
+      "value": "10000"
     }
   ],
   "output_sockets": [
     {
-      "name": "select_columns",
+      "name": "calculate_blank_threshold",
       "socket_type": "one_to_many"
     }
   ]

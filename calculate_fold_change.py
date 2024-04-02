@@ -54,7 +54,7 @@ def calculate_log_fold_change(input_file, group_ids, reverse=True, log2fold=True
         group1_columns = groups[group1]
         group2_columns = groups[group2]
         col_log_fold = "".join(group1.split(" ")) + "_vs_" + "".join(
-            group2.split(" ")) + "_LogFoldChange"  # column name to store Log Fold Change
+            group2.split(" ")) + "_FoldChange"  # column name to store Log Fold Change
         col_log2_fold = "".join(group1.split(" ")) + "_vs_" + "".join(
             group2.split(" ")) + "_Log2FoldChange"  # column name to store Log 2 Fold Change
         df[col_log_fold] = df[group1_columns].mean(axis=1)/df[group2_columns].mean(axis=1)

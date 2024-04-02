@@ -19,8 +19,8 @@ def impute(data_frame, current_col, impute_method=None):
 # impute all chosen columns with the desired value
 def impute_table(input_file, impute_method="impute_with_blank_threshold"):
     try:
-        imputed_df = pd.read_table(input_file, index_col=0)
-        marked_df = pd.read_table(input_file, index_col=0)
+        imputed_df = pd.read_table(input_file)
+        marked_df = pd.read_table(input_file)
     except Exception as e:
         raise "Cannot read input file: " + str(e)
 
@@ -42,8 +42,8 @@ def impute_table(input_file, impute_method="impute_with_blank_threshold"):
 
     marked_df.drop(['blank_threshold'], axis=1, inplace=True)  # drop the comparison column
     imputed_df.drop(['blank_threshold'], axis=1, inplace=True)
-    imputed_df.to_csv(f"{os.getcwd()}/output/imputed_tables/imputed_table.quantified", sep="\t", index=True)
-    marked_df.to_csv(f"{os.getcwd()}/output/marked_tables/marked_table.quantified", sep="\t", index=True)
+    imputed_df.to_csv(f"{os.getcwd()}/output/imputed_tables/imputed_table.quantified", sep="\t", index=False)
+    marked_df.to_csv(f"{os.getcwd()}/output/marked_tables/marked_table.quantified", sep="\t", index=False)
     return
 
 

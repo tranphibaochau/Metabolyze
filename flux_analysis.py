@@ -1,15 +1,16 @@
 import pandas as pd
 import sys
 import os
-
+import re
 
 def flux_analysis(input_file):
     df = pd.read_table(input_file)
-    columns = [x for x in df.columns if (x.startswith("S") and "Blank" not in x)]
+    pattern = r'^S\d+'  # check if column name follows the patter S#####
+    columns = [x for x in df.columns if re.match(pattern, x)]
 
     original_row = None
     for i, row in df.iterrows():
-        if row['Formula'].endswith("13C-0"):
+        if row[0].endswith("-0"):
             if original_row is not None:
                 for col in columns:
                     df.loc[original_row, col] = 100

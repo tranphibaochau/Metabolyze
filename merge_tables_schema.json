@@ -1,19 +1,24 @@
 {
-  "node_title": "Correct Blank Columns",
+  "node_title": "Merge Tables",
   "node_type": "dataProcessingNode",
   "script_file_type": "python",
   "command":"python3",
   "script_file_suffix": "py",
   "parameters": [
     {
-      "name": "Input File",
+      "name": "Input File 1",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Input File 2",
       "type": "socket",
       "socket_type": "one_to_one"
     }
   ],
   "output_sockets": [
     {
-      "name": "blank_columns_corrected",
+      "name": "merged_table",
       "socket_type": "one_to_many"
     }
   ]

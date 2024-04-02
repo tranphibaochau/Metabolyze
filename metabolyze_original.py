@@ -544,7 +544,7 @@ class Analysis:
             print("Significant Metabolites P-value < 0.05:",len(test.loc[test['ttest_pval'] < 0.05]))
         
             #Generate Volcano
-            print("Generating Volcano Plot: %s" %comparison_name)
+            print("Generating Volcano Plot: %s" % comparison_name)
             
             if self.method == 'default':
                 proc = sp.Popen(['Rscript','scripts/volcano.plot.R',comparison_name,'True'])
