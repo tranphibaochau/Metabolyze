@@ -1,0 +1,63 @@
+{
+  "node_title": "Draw Heat Maps (All Groups)",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Group ID File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "z_score",
+      "type": "list",
+      "value": "row",
+      "options": [
+        "row",
+        "col",
+        "None"
+      ]
+    },
+    {
+      "name": "standard_scale",
+      "type": "list",
+      "value": "None",
+      "options": [
+        "row",
+        "col",
+        "None"
+      ]
+    },
+    {
+      "name": "row_cluster",
+      "type": "list",
+      "value": "True",
+      "options": [
+        "True",
+        "False"
+      ]
+    },
+    {
+      "name": "col_cluster",
+      "type": "list",
+      "value": "True",
+      "options": [
+        "True",
+        "False"
+      ]
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "heatmaps",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
