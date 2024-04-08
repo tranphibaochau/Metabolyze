@@ -4,22 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Added scripts to calculate statistics">
-      <change afterPath="$PROJECT_DIR$/calculate_blank_threshold_schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/impute_table_schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/merge_tables.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/merge_tables_schema.json" afterDir="false" />
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Fixed various scripts after pilot test on metabolomics.org">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/calculate_non_zero_percentage.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/draw_heatmap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blank_columns_corrected.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculate_blank_threshold.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_blank_threshold.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_combined_mean.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_combined_mean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_combined_mean_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_combined_mean_schema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculate_fold_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_fold_change.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flux_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/flux_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_group_ids.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/impute_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/impute_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metabolyze_original.py" beforeDir="false" afterPath="$PROJECT_DIR$/metabolyze_original.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pca_analysis.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reshuffle_col.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/select_columns_schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/t_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/t_test.quantified" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/t_test_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/t_test_schema.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -56,42 +52,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.blank_threshold.executor": "Run",
-    "Python.blank_threshold_correction.executor": "Run",
-    "Python.calculate_blank_threshold.executor": "Run",
-    "Python.calculate_combined_mean.executor": "Run",
-    "Python.calculate_fold_change.executor": "Run",
-    "Python.get_group_ids.executor": "Run",
-    "Python.impute_table.executor": "Run",
-    "Python.merge_tables.executor": "Run",
-    "Python.metabolyze.executor": "Run",
-    "Python.metabolyze_original.executor": "Run",
-    "Python.pca_analysis.executor": "Run",
-    "Python.pearson_correlation.executor": "Run",
-    "Python.reshuffle_col.executor": "Run",
-    "Python.select_columns.executor": "Run",
-    "Python.t_test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/cpt289/AppData/Local/Temp/scp16302/home/ubuntu/users/chau/Metabolyze",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.blank_threshold.executor&quot;: &quot;Run&quot;,
+    &quot;Python.blank_threshold_correction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_blank_threshold.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_combined_mean.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_fold_change.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_heatmap.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_group_ids.executor&quot;: &quot;Run&quot;,
+    &quot;Python.impute_table.executor&quot;: &quot;Run&quot;,
+    &quot;Python.merge_tables.executor&quot;: &quot;Run&quot;,
+    &quot;Python.metabolyze.executor&quot;: &quot;Run&quot;,
+    &quot;Python.metabolyze_original.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pca_analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pearson_correlation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.reshuffle_col.executor&quot;: &quot;Run&quot;,
+    &quot;Python.select_columns.executor&quot;: &quot;Run&quot;,
+    &quot;Python.t_test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/cpt289/AppData/Local/Temp/scp16302/home/ubuntu/users/chau/Metabolyze&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\cpt289\AppData\Local\Temp\scp16302\home\ubuntu\users\chau\Metabolyze" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.merge_tables">
+  <component name="RunManager" selected="Python.draw_heatmap">
     <configuration name="calculate_combined_mean" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
@@ -138,7 +135,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="get_group_ids" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="draw_heatmap" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,7 +149,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/get_group_ids.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/draw_heatmap.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -209,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.draw_heatmap" />
         <item itemvalue="Python.merge_tables" />
         <item itemvalue="Python.pearson_correlation" />
         <item itemvalue="Python.calculate_combined_mean" />
         <item itemvalue="Python.calculate_fold_change" />
-        <item itemvalue="Python.get_group_ids" />
       </list>
     </recent_temporary>
   </component>
@@ -255,6 +252,11 @@
       <workItem from="1711122819032" duration="2794000" />
       <workItem from="1711323765024" duration="717000" />
       <workItem from="1711332368558" duration="8682000" />
+      <workItem from="1712156817120" duration="19283000" />
+      <workItem from="1712221274396" duration="55000" />
+      <workItem from="1712221441990" duration="995000" />
+      <workItem from="1712238775287" duration="12147000" />
+      <workItem from="1712343560712" duration="3204000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -296,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711997151983</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed various scripts after pilot test on metabolomics.org">
+      <option name="closed" value="true" />
+      <created>1712081227290</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712081227290</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +328,8 @@
     <MESSAGE value="Break down scripts into smaller functions" />
     <MESSAGE value="Added scripts to calculate t-test and pearson correlation" />
     <MESSAGE value="Added scripts to calculate statistics" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added scripts to calculate statistics" />
+    <MESSAGE value="Fixed various scripts after pilot test on metabolomics.org" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed various scripts after pilot test on metabolomics.org" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_group_mean.coverage" NAME="calculate_group_mean Coverage Results" MODIFIED="1711987862123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -336,6 +347,7 @@
     <SUITE FILE_PATH="coverage/Metabolyze$t_test.coverage" NAME="t_test Coverage Results" MODIFIED="1711476148865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$blank_threshold_correction.coverage" NAME="blank_threshold_correction Coverage Results" MODIFIED="1708620001492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$pca_analysis.coverage" NAME="pca_analysis Coverage Results" MODIFIED="1710995261168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$draw_heatmap.coverage" NAME="draw_heatmap Coverage Results" MODIFIED="1712247241621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_fold_change.coverage" NAME="calculate_fold_change Coverage Results" MODIFIED="1711994715994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$merge_tables.coverage" NAME="merge_tables Coverage Results" MODIFIED="1712076883573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

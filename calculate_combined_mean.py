@@ -23,7 +23,7 @@ def get_group_names(group_ids, original_name=False):
     return group_dict
 
 
-def get_unique_comparisons(group_dict, reverse=True):
+def get_unique_comparisons(group_dict, reverse="False"):
     unique_groups = list(group_dict.keys())
     unique_comparisons = []
     for L in range(0, len(unique_groups) + 1):
@@ -33,17 +33,14 @@ def get_unique_comparisons(group_dict, reverse=True):
     # compare both group1 vs. group2 and group2 vs group1`
     reversed_groups = []
     for comparison in unique_comparisons:
-        reversed_comparison = tuple(reversed(comparison))
-        reversed_groups.append(reversed_comparison)
+        reversed_groups.append(comparison[::-1])
 
-    if (type(reverse) is bool and reverse is True):
-        unique_comparisons = unique_comparisons + reversed_groups
-    elif (type(reverse) is str and reverse=="True"):
+    if reverse == "True":
         unique_comparisons = unique_comparisons + reversed_groups
     return unique_comparisons
 
 
-def calculate_combined_mean(input_file, group_ids, reverse=True):
+def calculate_combined_mean(input_file, group_ids, reverse="False"):
     # check if the groups are in group_ids file
     groups = get_group_names(group_ids)
     unique_comparisons = get_unique_comparisons(groups, reverse)

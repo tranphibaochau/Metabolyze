@@ -34,16 +34,15 @@ def get_unique_comparisons(group_dict, reverse=True):
     # compare both group1 vs. group2 and group2 vs group1`
     reversed_groups = []
     for comparison in unique_comparisons:
-        reversed_comparison = tuple(reversed(comparison))
-        reversed_groups.append(reversed_comparison)
+        reversed_groups.append(comparison[::-1])
 
-    if (type(reverse) is bool and reverse is True):
+    if reverse == "True":
         unique_comparisons = unique_comparisons + reversed_groups
 
     return unique_comparisons
 
 
-def calculate_log_fold_change(input_file, group_ids, reverse=True, log2fold=True):
+def calculate_log_fold_change(input_file, group_ids, reverse="True", log2fold="True"):
 
     # check if the groups are in group_ids file
     groups = get_group_names(group_ids)
@@ -59,7 +58,7 @@ def calculate_log_fold_change(input_file, group_ids, reverse=True, log2fold=True
             group2.split(" ")) + "_Log2FoldChange"  # column name to store Log 2 Fold Change
         df[col_log_fold] = df[group1_columns].mean(axis=1)/df[group2_columns].mean(axis=1)
         df.fillna({col_log_fold: "NA"}, inplace=True)  # replace NaN values with NA for readability
-        if log2fold:
+        if log2fold == "True":
             df[col_log2_fold] = np.log2(df[col_log_fold])
             df.fillna({col_log2_fold: "NA"}, inplace=True)  # replace NaN values with NA for readability
 

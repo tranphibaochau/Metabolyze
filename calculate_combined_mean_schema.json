@@ -1,5 +1,5 @@
 {
-  "node_title": "Calculate Fold Change",
+  "node_title": "Calculate Combined Mean",
   "node_type": "dataProcessingNode",
   "script_file_type": "python",
   "command":"python3",
@@ -18,7 +18,7 @@
     {
       "name": "Reverse Comparison",
       "type": "list",
-      "value": "True",
+      "value": "False",
       "options": [
         "True",
         "False"

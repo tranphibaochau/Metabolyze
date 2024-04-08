@@ -18,7 +18,7 @@
     {
       "name": "Reverse Comparison",
       "type": "list",
-      "value": "True",
+      "value": "False",
       "options": [
         "True",
         "False"
@@ -27,7 +27,7 @@
   ],
   "output_sockets": [
     {
-      "name": "statistical_ttest",
+      "name": "ttest_pval",
       "socket_type": "one_to_many"
     }
   ]
