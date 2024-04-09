@@ -1,0 +1,59 @@
+{
+  "node_title": "Heatmap (R) - Two Groups",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "R",
+  "command": "Rscript",
+  "script_file_suffix": "R",
+  "parameters": [
+    {
+      "name": "Input Data",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Group IDs",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "p Value",
+      "type": "number",
+      "value": "0.05"
+    },
+    {
+      "name": "scale",
+      "type": "list",
+      "value": "row",
+      "options": [
+        "row",
+        "column",
+        "none"
+      ]
+    },
+    {
+      "name": "fontsize",
+      "type": "number",
+      "value": "8"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "value": "8"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "value": "12"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "heatmap",
+      "socket_type": "one_to_many"
+    },
+    {
+      "name": "iframe",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
