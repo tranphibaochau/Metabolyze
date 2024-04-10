@@ -1,3 +1,4 @@
+install.packages('manhattanly', dependencies = TRUE)
 suppressMessages(library('manhattanly',quietly=TRUE,warn.conflicts = FALSE))
 
 args = commandArgs(trailingOnly=TRUE)
@@ -5,17 +6,14 @@ args = commandArgs(trailingOnly=TRUE)
 input_split <- strsplit(args[1], "\\/")[[1]]
 # Create environment variables
 
-directory <- input_split[1]
-file_name <- input_split[3]
 input_csv <- args[1]
-
+current_hashed_folder <- getwd()
 
 result <- read.csv(input_csv,check.names = F)
 result <- result[!is.na(result$ttest_pval),]
 
 colnames(result)[which(names(result) == "ttest_pval")] <- "P"
 colnames(result)[which(names(result) == "Log2FoldChange")] <- "EFFECTSIZE"
-#result$EFFECTSIZE <- log2(result$EFFECTSIZE)
 if (args[2] == 'True'){
 	volcano <- volcanoly(result, snp = "Metabolite", gene = "Formula",effect_size_line = c(-0.136, 0.136),genomewideline = -log10(0.05),xlab = 'log2FC',ylab='-log10(p)')
 } else 
@@ -23,9 +21,11 @@ if (args[2] == 'True'){
 
 }
 
-setwd(directory)
-setwd('Volcano')
 
+iframe_dir = paste(current_hashed_folder,'/iframe',sep="")
+dir.create(iframe_dir)
+volcano_dir = paste(current_hashed_folder,'/output/volcano/volcano.pdf',sep="")
+pdf(pdf_name)
 
 title = paste(file_name,'.volcano.html')
 title = gsub(" ", "", title, fixed = TRUE)

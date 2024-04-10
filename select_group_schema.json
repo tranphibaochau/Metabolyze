@@ -1,0 +1,39 @@
+{
+  "node_title": "Select Groups For Visualization",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Group IDs",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Group 1 Name",
+      "type": "text",
+      "value": "None"
+    },
+    {
+      "name": "Group 2 Name",
+      "type": "text",
+      "value": "None"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "select_group",
+      "socket_type": "one_to_many"
+    },
+    {
+      "name": "color_selection",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

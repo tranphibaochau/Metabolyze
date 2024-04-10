@@ -5,15 +5,23 @@ import os
 import itertools
 
 
-
-
-def calculate_log_fold_change(input_file):
-
+def read_table_as_dataframe(input_file):
     try:
-        df = pd.read_csv(input_file, sep='\t')
+        df = pd.read_table(input_file, sep="\t")
+        if len(df.columns) == 1 and len(df.columns[0].split(",")) > 1:
+            df = pd.read_table(input_file, sep=",")
+    except FileNotFoundError:
+        print("File not found.")
+    except pd.errors.EmptyDataError:
+        print("Empty file.")
     except Exception as e:
-        raise("Could not read input file: {}".format(input_file))
-    if any("LogFoldChange" in x for x in df.columns):
+        print("Error occurred:", e)
+    return df
+
+def calculate_log_fold_change(input_file, fold_change=False, log_fold_change=True):
+
+    df = read_table_as_dataframe(input_file)
+    if any("FoldChange" in x for x in df.columns):
         pass
     else:
         raise ValueError("LogFoldChange not found in input file: {}".format(input_file))

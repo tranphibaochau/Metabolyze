@@ -22,7 +22,7 @@ width <- args[6]
 height <- args[7]
 current_hashed_folder <- getwd()
 
-heatmap <- function(comparison, group_ids, pvalue, scale, fontsize, width, height){
+heatmap <- function(comparison, group_ids, pvalue){ # scale, fontsize, width, height
   directory <- strsplit(comparison, "\\\\")[[1]]
   comparison_name <- directory[-1]
   pvalue <- as.double(pvalue)
@@ -32,6 +32,7 @@ heatmap <- function(comparison, group_ids, pvalue, scale, fontsize, width, heigh
   counts <-read.csv(comparison, sep="\t", check.names = F)
   #counts$ttest_pval <- as.numeric(levels(counts$ttest_pval))[counts$ttest_pval]
   counts <- counts[which(counts$ttest_pval < pvalue), ]
+  colnames(counts)[which(names(counts) == "Metabolite")]  <- 'Delete'
   colnames(counts)[which(names(counts) == "RT.Start..min.")]  <- 'Delete'
 
   # remove std counts
@@ -46,8 +47,7 @@ heatmap <- function(comparison, group_ids, pvalue, scale, fontsize, width, heigh
 
   subset_color <- sampleTable[!duplicated(sampleTable[c("Group","Color")]),]
 
-  sampleTable <- sampleTable %>%
-  filter(Group != "Blank")
+  sampleTable <- sampleTable %>% filter(Group != "Blank")
   columns.interest <- c('id','Group')
   sampleTable <- sampleTable[,columns.interest]
   sampleTable <- as.data.frame(sampleTable)
@@ -127,5 +127,5 @@ heatmap <- function(comparison, group_ids, pvalue, scale, fontsize, width, heigh
   garbage <- dev.off()
 }
 
-
-heatmap(comparison, group_ids, pvalue, scale, fontsize, width, height)
+heatmap(comparison, group_ids, pvalue)
+# heatmap(comparison, group_ids, pvalue, scale, fontsize, width, height)

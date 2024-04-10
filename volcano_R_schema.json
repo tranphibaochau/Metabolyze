@@ -1,0 +1,29 @@
+{
+  "node_title": "Volcano Plot (R) - Two Groups",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "R",
+  "command": "Rscript",
+  "script_file_suffix": "R",
+  "parameters": [
+    {
+      "name": "Input Data",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Group IDs",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "volcano_plot",
+      "socket_type": "one_to_many"
+    },
+    {
+      "name": "iframe",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
