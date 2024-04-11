@@ -17,7 +17,7 @@ def read_table_as_dataframe(input_file):
     except Exception as e:
         print("Error occurred:", e)
     return df
-def select_groups(input_file, group_ids, group1=None, group2=None):
+def select_groups(input_file, group_ids, group1="All", group2="All"):
     def get_group_names(input):
         groups = pd.read_table(input, sep="\t")
         group_dict = {}
@@ -42,11 +42,12 @@ def select_groups(input_file, group_ids, group1=None, group2=None):
     for x, y in zipped_up:
         group_df.loc[group_df.Group == y, 'Color'] = x
 
-    if group1 =="None" and group2 == "None":
-        df.to_csv(f"{os.getcwd()}/output/select_group/output.tsv", sep="\t", index=False)
+    if group1 =="All" and group2 == "All":
+        df.to_csv(f"{os.getcwd()}/output/selected_groups/output.tsv", sep="\t", index=False)
+        group_df.to_csv(f"{os.getcwd()}/output/group_colors/groups.tsv", sep="\t", index=False)
         return
-    elif group1 == "None" or group2 == "None":
-        raise Exception(f"{group1} and {group2} must both be None, or be provided")
+    elif group1 == "All" or group2 == "All":
+        raise Exception(f"{group1} and {group2} must both be All, or be specified")
     if group1 not in group_dict:
         raise KeyError(f"{group1} not found in Groups.tsv")
     if group2 not in group_dict:
@@ -73,8 +74,8 @@ def select_groups(input_file, group_ids, group1=None, group2=None):
     grp2_cols = [x[1] for x in group_dict[group2]]
     comparison_df = df[itertools.chain(['Metabolite', 'Formula'], grp1_cols, grp2_cols, statistics_col)]
     comparison_df.rename(columns=col_name_change, inplace=True)
-    comparison_df.to_csv(f"{os.getcwd()}/output/select_group/output.tsv", sep="\t", index=False)
-    group_df.to_csv(f"{os.getcwd()}/output/color_selection/groups.tsv", sep="\t", index=False)
+    comparison_df.to_csv(f"{os.getcwd()}/output/selected_groups/output.tsv", sep="\t", index=False)
+    group_df.to_csv(f"{os.getcwd()}/output/group_colors/groups.tsv", sep="\t", index=False)
 
 
 input_file = sys.argv[1]

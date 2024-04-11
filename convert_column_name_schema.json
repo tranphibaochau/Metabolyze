@@ -1,5 +1,5 @@
 {
-  "node_title": "Select Groups For Visualization",
+  "node_title": "Convert Column Names",
   "node_type": "dataProcessingNode",
   "script_file_type": "python",
   "command":"python3",
@@ -11,28 +11,23 @@
       "socket_type": "one_to_one"
     },
     {
-      "name": "Group IDs",
+      "name": "Group ID File",
       "type": "socket",
       "socket_type": "one_to_one"
     },
     {
-      "name": "Group 1 Name",
-      "type": "text",
-      "value": "All"
-    },
-    {
-      "name": "Group 2 Name",
-      "type": "text",
-      "value": "All"
+      "name": "Convert Name to ID",
+      "type": "list",
+      "value": "True",
+      "options": [
+        "True",
+        "False"
+      ]
     }
   ],
   "output_sockets": [
     {
-      "name": "selected_groups",
-      "socket_type": "one_to_many"
-    },
-    {
-      "name": "group_colors",
+      "name": "convert_column_names",
       "socket_type": "one_to_many"
     }
   ]

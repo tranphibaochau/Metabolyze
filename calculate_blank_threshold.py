@@ -2,12 +2,21 @@ import pandas as pd
 import os
 import sys
 
+def read_table_as_dataframe(input_file):
+    try:
+        df = pd.read_table(input_file, sep="\t")
+        if len(df.columns) == 1 and len(df.columns[0].split(",")) > 1:
+            df = pd.read_table(input_file, sep=",")
+    except FileNotFoundError:
+        print("File not found.")
+    except pd.errors.EmptyDataError:
+        print("Empty file.")
+    except Exception as e:
+        print("Error occurred:", e)
+    return df
 
 def calculate_blank_threshold(input_file, signal_to_noise=3, min_signal=10000):
-    try:
-        df = pd.read_table(input_file, index_col=0)
-    except Exception as e:
-        raise "Cannot read input file: " + str(e)
+    df = read_table_as_dataframe(input_file)
     blank_columns = [x for x in df.columns.unique() if "Blank" in x]
     df['blank_threshold'] = df[blank_columns].mean(axis=1) * signal_to_noise + min_signal  # calculate blank threshold
     df['blank_threshold'] = df['blank_threshold'].round().astype(int)  # round to the nearest integer

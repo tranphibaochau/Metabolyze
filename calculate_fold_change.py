@@ -12,7 +12,7 @@ def get_group_names(group_ids, original_name=False):
         raise "Cannot read input file: " + str(e)
 
     group_dict = {}
-    unique_groups = [x for x in groups.Group.unique() if x !="Blank"]
+    unique_groups = [x for x in groups.Group.unique() if x != "Blank"]
     if not original_name:
         for n in unique_groups:
             original_column_names = groups.loc[groups.Group == n].File.values.tolist()
@@ -43,7 +43,6 @@ def get_unique_comparisons(group_dict, reverse=True):
 
 
 def calculate_log_fold_change(input_file, group_ids, reverse="True", log2fold="True"):
-
     # check if the groups are in group_ids file
     groups = get_group_names(group_ids)
     unique_comparisons = get_unique_comparisons(groups, reverse)
@@ -56,12 +55,11 @@ def calculate_log_fold_change(input_file, group_ids, reverse="True", log2fold="T
             group2.split(" ")) + "_FoldChange"  # column name to store Log Fold Change
         col_log2_fold = "".join(group1.split(" ")) + "_vs_" + "".join(
             group2.split(" ")) + "_Log2FoldChange"  # column name to store Log 2 Fold Change
-        df[col_log_fold] = df[group1_columns].mean(axis=1)/df[group2_columns].mean(axis=1)
-        df.fillna({col_log_fold: "NA"}, inplace=True)  # replace NaN values with NA for readability
+        df[col_log_fold] = df[group1_columns].mean(axis=1) / df[group2_columns].mean(axis=1)
+
         if log2fold == "True":
             df[col_log2_fold] = np.log2(df[col_log_fold])
-            df.fillna({col_log2_fold: "NA"}, inplace=True)  # replace NaN values with NA for readability
-
+        df.fillna({col_log2_fold: "NA", col_log_fold: "NA"}, inplace=True)  # replace NaN values with NA for readability
 
     df.to_csv(f"{os.getcwd()}/output/fold_change/fold_change.quantified", sep="\t", index=False)
     return

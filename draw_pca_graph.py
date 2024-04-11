@@ -3,154 +3,92 @@ import os
 import matplotlib
 
 matplotlib.use('Agg')
-
-import pandas as pd
 import numpy as np
 from scipy import *
 from scipy import stats
 from sklearn.decomposition import PCA
 import plotly
 import plotly.graph_objs as go
-import os
-import operator
-import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
-from math import sqrt
-from itertools import combinations
 from matplotlib import rcParams
+import sys
 
 rcParams['pdf.fonttype'] = 42  ## Output Type 3 (Type3) or Type 42 (TrueType)
 rcParams['font.sans-serif'] = 'Arial'
-import sys
-
-matrix_path = sys.argv[1]
-groups_path = sys.argv[2]
-pca_name = sys.argv[3]
-
-COLORS8 = [
-    '#1F77B4',
-    '#26A9E0',
-    '#75DBA7',
-    '#2CA02C',
-    '#9467BD',
-    '#FF0000',
-    '#FF7F0E',
-    '#E377C2',
-]
-
-COLORS = ['#1F78B4', '#E31A1C', '#FF7F00', '#6A3D9A', '#B15928', '#666666', 'k']
-COLORS10 = [
-    '#1f77b4',
-    '#ff7f0e',
-    '#2ca02c',
-    '#d62728',
-    '#9467bd',
-    '#8c564b',
-    '#e377c2',
-    '#7f7f7f',
-    '#bcbd22',
-    '#17becf',
-]
-
-samplesheet = pd.read_csv(groups_path)
-samplesheet = samplesheet.loc[samplesheet['Color'] != 'Blank']
-COLORS20 = samplesheet['Color'].tolist()
-
-COLORS20 = sorted(set(COLORS20), key=COLORS20.index)
-
-COLORS20b = [
-    '#393b79',
-    '#5254a3',
-    '#6b6ecf',
-    '#9c9ede',
-    '#637939',
-    '#8ca252',
-    '#b5cf6b',
-    '#cedb9c',
-    '#8c6d31',
-    '#bd9e39',
-    '#e7ba52',
-    '#e7cb94',
-    '#843c39',
-    '#ad494a',
-    '#d6616b',
-    '#e7969c',
-    '#7b4173',
-    '#a55194',
-    '#ce6dbd',
-    '#de9ed6',
-]
 
 
-def perform_PCA(fpkmMatrix, standardize=3, log=True):
+def read_table_as_dataframe(input_file):
+    try:
+        df = pd.read_table(input_file, sep="\t")
+        if len(df.columns) == 1 and len(df.columns[0].split(",")) > 1:
+            df = pd.read_table(input_file, sep=",")
+    except FileNotFoundError:
+        print("File not found.")
+    except pd.errors.EmptyDataError:
+        print("Empty file.")
+    except Exception as e:
+        print("Error occurred:", e)
+    return df
+
+
+def perform_PCA(df, standardize=3, log=True):
     ## preprocessing of the fpkmMatrix
     if log:
-        fpkmMatrix = np.log10(fpkmMatrix + 1.)
+        df = np.log10(df + 1.)
     if standardize == 2:  # standardize along rows/genes
-        fpkmMatrix = stats.zscore(fpkmMatrix, axis=1)
+        df = stats.zscore(df, axis=1)
     elif standardize == 1:  # standardize along cols/samples
-        fpkmMatrix = stats.zscore(fpkmMatrix, axis=0)
+        df = stats.zscore(df, axis=0)
 
     ## remove genes with NaNs
-    fpkmMatrix = fpkmMatrix[~np.isnan(np.sum(fpkmMatrix, axis=1))]
+    df = df[~np.isnan(np.sum(df, axis=1))]
 
     pca = PCA(n_components=None)
     ## get variance captured
-    pca.fit(fpkmMatrix.T)
+    pca.fit(df.T)
     variance_explained = pca.explained_variance_ratio_[0:3]
     variance_explained *= 100
     ## compute PCA and plot
-    pca_transformed = pca.transform(fpkmMatrix.T)
+    pca_transformed = pca.transform(df.T)
     return variance_explained, pca_transformed
 
 
-def main_plot():
-    # directory = matrix_path.split('/')[0]
-    # print(directory)
-    expr_df = pd.read_csv(matrix_path)
+def draw_pca_plot(input_file, group_ids):
+    df = read_table_as_dataframe(input_file)
+    # df.index = df['Metabolite']
+    # df = df.astype(float)
 
-    expr_df.index = expr_df['Metabolite']
-    del expr_df['Metabolite']
-    expr_df = expr_df.astype(float)
+    group_df = read_table_as_dataframe(group_ids)
+    group_df = group_df.loc[group_df['Group'] != 'Blank']
+    group_df = group_df[group_df['id'].isin(df.columns)]  # keep only rows that contain column names in df
+    group_df.index = group_df['id']
+    colors = group_df['Color'].unique().tolist()
+    df = df.reindex(columns=group_df['id'].tolist())
 
-    meta_df = pd.read_csv(groups_path)
-    meta_df = meta_df.loc[meta_df['Group'] != 'Blank']
+    variance_explained, pca_transformed = perform_PCA(df.values, standardize=2, log=True)
 
-    meta_df['File'].str.replace('.mzXML', '')
-
-    meta_df.index = meta_df['id']
-    expr_df = expr_df.reindex(columns=meta_df['id'].tolist())
-
-    variance_explained, pca_transformed = perform_PCA(expr_df.values, standardize=2, log=True)
-
-    print(meta_df)
-    meta_df['x'] = pca_transformed[:, 0]
-    meta_df['y'] = pca_transformed[:, 1]
-    meta_df['z'] = pca_transformed[:, 2]
-
-    conditions = meta_df['Group'].unique().tolist()
-    # platforms = meta_df['platform'].unique().tolist()
-    SYMBOLS = ['circle']
-    COLORS = COLORS20
+    group_df['x'] = pca_transformed[:, 0]
+    group_df['y'] = pca_transformed[:, 1]
+    group_df['z'] = pca_transformed[:, 2]
 
     data = []
-    # print(meta_df)
+    # print(group_df)
+    conditions = group_df['Group'].unique().tolist()
 
-    for (condition), meta_df_sub in meta_df.groupby(['Group']):
-        # print(condition)
+    for condition in conditions:
+        sub_df = group_df[group_df['Group'] == condition]
         # Iteratate through samples grouped by condition and platform
         display_name = '%s' % (condition)
         # Initiate a Scatter3d instance for each group of samples specifying their coordinates
         # and displaying attributes including color, shape, size and etc.
         trace = go.Scatter3d(
-            x=meta_df_sub['x'],
-            y=meta_df_sub['y'],
-            z=meta_df_sub['z'],
-            text=meta_df_sub.index,
+            x=sub_df['x'],
+            y=sub_df['y'],
+            z=sub_df['z'],
+            text=sub_df['Group'],
             mode='markers',
             marker=dict(
                 size=10,
-                color=COLORS[conditions.index(condition)],  # Color by infection status
+                color=colors[conditions.index(condition)],  # Color by infection status
                 opacity=.8,
             ),
             name=display_name,
@@ -169,9 +107,10 @@ def main_plot():
                   )
     fig = dict(data=data, layout=layout)
 
-    plotly.offline.plot(fig, filename=str(pca_name))
+    plotly.offline.plot(fig, filename=f"{os.getcwd()}/output/pca_plot/pca.html")
 
 
-# fig.write_image("images/fig1.pdf")
-main_plot()
-# plotly.offline.iplot(fig)
+input_file = sys.argv[1]
+groups_path = sys.argv[2]
+
+draw_pca_plot("skeleton_grp1_grp3.tsv", "test_groups.tsv")
