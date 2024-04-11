@@ -27,10 +27,9 @@ def get_group_names(group_ids, original_name=False):
 def get_unique_comparisons(group_dict, reverse=True):
     unique_groups = list(group_dict.keys())
     unique_comparisons = []
-    for L in range(0, len(unique_groups) + 1):
-        for subset in itertools.combinations(unique_groups, L):
-            if len(subset) == 2:
-                unique_comparisons.append(subset)
+    # get combinations of groups for comparison
+    for subset in itertools.combinations(unique_groups, 2):
+        unique_comparisons.append(subset)
     # compare both group1 vs. group2 and group2 vs group1`
     reversed_groups = []
     for comparison in unique_comparisons:
