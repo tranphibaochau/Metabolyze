@@ -96,14 +96,14 @@ def draw_pca_plot(input_file, group_ids):
     if len(unique_groups) > 2:
         for subset in combinations(unique_groups, 2):
             grp1, grp2 = subset
+            name = grp1 + " and " + grp2
             grp1_cols = group_dict[grp1]
             grp2_cols = group_dict[grp2]
             comparison_df = df[grp1_cols + grp2_cols]
-            sub_df_list.append(comparison_df)
+            sub_df_list.append((name, comparison_df))
     rows = len(sub_df_list)+1
     cols = 1
-    with (open(f"{os.getcwd()}/output/pca_plot/output.html", "w+") as f,
-          open(f"{os.getcwd()}/output/iframe/output.html", "w+") as iframe):
+    with open(f"{os.getcwd()}/output/iframe/output.html", "w+") as f:
         fig = go.Figure()
         for grp in groups:
             sub_df = group_df[group_df['Group'] == grp]
@@ -134,11 +134,11 @@ def draw_pca_plot(input_file, group_ids):
                               zaxis=dict(title='PC3 (%.2f%% variance)' % variance_explained[2])
                           )
                           ))
+        plotly.offline.plot(fig, filename=f"{os.getcwd()}/output/pca_plot/output.html", auto_open=False)
         f.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
-        iframe.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
 
         if len(sub_df_list) > 0:
-            for i, sub_df in enumerate(sub_df_list):
+            for (name, sub_df) in sub_df_list:
                 fig = go.Figure()
 
                 sub_group_df = group_df[group_df['id'].isin(sub_df.columns)]  # keep only rows that contain column names in df
@@ -172,15 +172,15 @@ def draw_pca_plot(input_file, group_ids):
 
                     fig.add_trace(trace)
                 fig.update_layout(dict(height=1000, width=1200,
-                                   title='3D PCA plot',
+                                   title='3D PCA plot between ' + name,
                                    scene=dict(
                                        xaxis=dict(title='PC1 (%.2f%% variance)' % variance_explained[0]),
                                        yaxis=dict(title='PC2 (%.2f%% variance)' % variance_explained[1]),
                                        zaxis=dict(title='PC3 (%.2f%% variance)' % variance_explained[2])
                                    )
                                    ))
+                plotly.offline.plot(fig, filename=f"{os.getcwd()}/output/pca_plot/{name}.html", auto_open=False)
                 f.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
-                iframe.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
 
 
 

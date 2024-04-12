@@ -39,7 +39,7 @@ def calculate_impact_score(input_file):
         col_impact_score = group_comparison + "impact_score"
 
         df[col_impact_score] = (2**abs(df[c]))*df[group_comparison+"combined_mean"]/(df[group_comparison+"ttest_pval"]) / 1000000
-
+        df[col_impact_score] = df[col_impact_score].round()
         df.fillna({col_impact_score: "NA"}, inplace=True)  # replace NaN values with NA for readability
 
     df.to_csv(f"{os.getcwd()}/output/impact_score/impact_score.quantified", sep="\t", index=False)

@@ -1,0 +1,29 @@
+{
+  "node_title": "Impact Score Plot",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Group IDs",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "impact_plot",
+      "socket_type": "one_to_many"
+    },
+    {
+      "name": "iframe",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

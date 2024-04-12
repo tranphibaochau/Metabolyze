@@ -1,0 +1,44 @@
+{
+  "node_title": "Draw Volcano Plot",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Significant p-value Threshold",
+      "type": "text",
+      "value": "0.05"
+    },
+    {
+      "name": "Effect Size Lower Bound",
+      "type": "text",
+      "value": "-0.5"
+    },
+    {
+      "name": "Effect Size Upper Bound",
+      "type": "text",
+      "value": "0.5"
+    },
+    {
+      "name": "Opacity",
+      "type": "text",
+      "value": "0.5"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "volcano_plot",
+      "socket_type": "one_to_many"
+    },
+    {
+      "name": "iframe",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
