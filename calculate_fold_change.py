@@ -27,9 +27,10 @@ def get_group_names(group_ids, original_name=False):
 def get_unique_comparisons(group_dict, reverse=True):
     unique_groups = list(group_dict.keys())
     unique_comparisons = []
-    # get combinations of groups for comparison
-    for subset in itertools.combinations(unique_groups, 2):
-        unique_comparisons.append(subset)
+    for L in range(0, len(unique_groups) + 1):
+        for subset in itertools.combinations(unique_groups, L):
+            if len(subset) == 2:
+                unique_comparisons.append(subset)
     # compare both group1 vs. group2 and group2 vs group1`
     reversed_groups = []
     for comparison in unique_comparisons:
@@ -50,10 +51,10 @@ def calculate_log_fold_change(input_file, group_ids, reverse="True", log2fold="T
         # find the list of all columns within each group
         group1_columns = groups[group1]
         group2_columns = groups[group2]
-        col_log_fold = "".join(group1.split(" ")) + "_vs_" + "".join(
-            group2.split(" ")) + "_FoldChange"  # column name to store Log Fold Change
-        col_log2_fold = "".join(group1.split(" ")) + "_vs_" + "".join(
-            group2.split(" ")) + "_Log2FoldChange"  # column name to store Log 2 Fold Change
+        col_log_fold = group1.replace(" ", "_") + "_vs_" + group2.replace(" ",
+                                                                          "_") + "_FoldChange"  # column name to store Log Fold Change
+        col_log2_fold = group1.replace(" ", "_") + "_vs_" + group2.replace(" ",
+                                                                           "_") + "_Log2FoldChange"  # column name to store Log 2 Fold Change
         df[col_log_fold] = df[group1_columns].mean(axis=1) / df[group2_columns].mean(axis=1)
 
         if log2fold == "True":

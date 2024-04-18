@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Updated PCA plot to be able to show multiple plots depending on the number of groups">
-      <change afterPath="$PROJECT_DIR$/draw_impact_plot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/draw_impact_plot_schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/draw_volcano_plot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/draw_volcano_plot_schema.json" afterDir="false" />
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Add Volcano Plot and Impact Score Plot">
+      <change afterPath="$PROJECT_DIR$/dewey.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dewey.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_fold_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_fold_change.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_group_mean.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_group_mean.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculate_impact_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_impact_score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draw_pca_graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_pca_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_t_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_t_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_volcano_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_volcano_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/impute_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/impute_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/select_groups_for_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/select_groups_for_visualization.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Unit Test" />
+        <option value="Jupyter Notebook" />
         <option value="Python Script" />
       </list>
     </option>
@@ -92,7 +95,7 @@
       <recent name="C:\Users\cpt289\AppData\Local\Temp\scp16302\home\ubuntu\users\chau\Metabolyze" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.draw_volcano_plot">
+  <component name="RunManager" selected="Python.impute_table">
     <configuration name="calculate_blank_threshold" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
@@ -185,7 +188,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="select_groups_for_visualization" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="impute_table" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -199,7 +202,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/select_groups_for_visualization.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/impute_table.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -210,11 +213,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.impute_table" />
         <item itemvalue="Python.draw_volcano_plot" />
         <item itemvalue="Python.draw_impact_plot" />
         <item itemvalue="Python.draw_pca_plot" />
         <item itemvalue="Python.calculate_blank_threshold" />
-        <item itemvalue="Python.select_groups_for_visualization" />
       </list>
     </recent_temporary>
   </component>
@@ -272,7 +275,10 @@
       <workItem from="1712798621122" duration="8113000" />
       <workItem from="1712844822183" duration="14603000" />
       <workItem from="1712896229743" duration="14845000" />
-      <workItem from="1712932566423" duration="7704000" />
+      <workItem from="1712932566423" duration="8351000" />
+      <workItem from="1713192777250" duration="9868000" />
+      <workItem from="1713363001327" duration="5992000" />
+      <workItem from="1713450407123" duration="4574000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -378,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712867478341</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add Volcano Plot and Impact Score Plot">
+      <option name="closed" value="true" />
+      <created>1712941473543</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712941473543</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,14 +419,15 @@
     <MESSAGE value="Add ability to pick groups for visualization scripts" />
     <MESSAGE value="Update input reading functions to handle both tsv and csv files" />
     <MESSAGE value="Updated PCA plot to be able to show multiple plots depending on the number of groups" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated PCA plot to be able to show multiple plots depending on the number of groups" />
+    <MESSAGE value="Add Volcano Plot and Impact Score Plot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Volcano Plot and Impact Score Plot" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/calculate_t_test.py</url>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/impute_table.py</url>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -431,7 +446,7 @@
     <SUITE FILE_PATH="coverage/Metabolyze$blank_threshold.coverage" NAME="blank_threshold Coverage Results" MODIFIED="1708714659446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$pearson_correlation.coverage" NAME="pearson_correlation Coverage Results" MODIFIED="1711997329280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_pca_graph.coverage" NAME="draw_pca_graph Coverage Results" MODIFIED="1712868067156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$impute_table.coverage" NAME="impute_table Coverage Results" MODIFIED="1711470120039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$impute_table.coverage" NAME="impute_table Coverage Results" MODIFIED="1713195628907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$metabolyze.coverage" NAME="metabolyze Coverage Results" MODIFIED="1711335028001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/Metabolyze" />
     <SUITE FILE_PATH="coverage/Metabolyze$t_test.coverage" NAME="t_test Coverage Results" MODIFIED="1711476148865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$select_groups_for_visualization.coverage" NAME="select_groups_for_visualization Coverage Results" MODIFIED="1712764896131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

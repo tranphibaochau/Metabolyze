@@ -28,7 +28,6 @@ def get_group_names(group_ids, original_name=False):
 def get_unique_comparisons(group_dict, reverse="True"):
     unique_groups = list(group_dict.keys())
     unique_comparisons = []
-    # get combinations of groups for comparison
     for subset in itertools.combinations(unique_groups, 2):
         unique_comparisons.append(subset)
     # compare both group1 vs. group2 and group2 vs group1`
@@ -36,7 +35,7 @@ def get_unique_comparisons(group_dict, reverse="True"):
     for comparison in unique_comparisons:
         reversed_groups.append(comparison[::-1])
 
-    if reverse == "True":
+    if reverse=="True":
         unique_comparisons = unique_comparisons + reversed_groups
 
     return unique_comparisons
@@ -61,7 +60,7 @@ def t_test(input_file, group_ids, reverse="True"):
             second = grp2.iloc[i]
             p_value = ttest_ind(first, second)[1]
             p_values.append(p_value)
-        col_name = "".join(group1.split(" ")) + "_vs_" + "".join(group2.split(" ")) + "_ttest_pval"  # column name to store p-value
+        col_name = group1.replace(" ", "_") + "_vs_" + group2.replace(" ", "_") + "_ttest_pval"  # column name to store p-value
         df[col_name] = p_values
         df.fillna({col_name: "NA"}, inplace=True)  # replace NaN values with NA for readability
     df.to_csv(f"{os.getcwd()}/output/ttest_pval/ttest_pval.quantified", sep="\t", index=False)

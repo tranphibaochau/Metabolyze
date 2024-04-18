@@ -29,7 +29,7 @@ def calculate_group_means(input_file, group_ids):
         raise "Cannot read input file: " + str(e)
     group_dict = get_group_names(group_ids)
     for group in group_dict:
-        col_name = "".join(group.split(" ")) + "_mean"
+        col_name = group.replace(" ", "_") + "_mean"
         group_ids = group_dict[group]
         df[col_name] = df[group_ids].mean(axis=1)
     df.to_csv(f"{os.getcwd()}/output/group_means/group_means.quantified", sep="\t", index=False)

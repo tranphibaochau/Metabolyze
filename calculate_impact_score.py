@@ -31,7 +31,7 @@ def calculate_impact_score(input_file):
     if any("_ttest_pval" in x for x in df.columns):
         pass
     else:
-        raise ValueError("mean not found in input file: {}".format(input_file))
+        raise ValueError("ttest_pval not found in input file: {}".format(input_file))
 
     cols = [x for x in df.columns if x.endswith("Log2FoldChange")]
     for c in cols:

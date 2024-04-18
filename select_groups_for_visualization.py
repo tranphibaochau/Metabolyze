@@ -54,9 +54,9 @@ def select_groups(input_file, group_ids, group1="All", group2="All"):
         raise KeyError(f"{group2} not found in Groups.tsv")
 
     # rename statistics columns
-    p_value_col = group1 + "_vs_" + group2 + "_ttest_pval"
-    impact_col = group1 + "_vs_" + group2 + "_impact_score"
-    logfoldchange_col = group1 + "_vs_" + group2 + "_Log2FoldChange"
+    p_value_col = group1.replace(" ", "_") + "_vs_" + group2.replace(" ", "_") + "_ttest_pval"
+    impact_col = group1.replace(" ", "_") + "_vs_" + group2.replace(" ", "_") + "_impact_score"
+    logfoldchange_col = group1.replace(" ", "_") + "_vs_" + group2.replace(" ", "_") + "_Log2FoldChange"
 
     statistics_col = []
     col_name_change = {}
@@ -72,7 +72,7 @@ def select_groups(input_file, group_ids, group1="All", group2="All"):
 
     grp1_cols = [x[1] for x in group_dict[group1]]
     grp2_cols = [x[1] for x in group_dict[group2]]
-    comparison_df = df[itertools.chain(['Metabolite', 'Formula'], grp1_cols, grp2_cols, statistics_col)]
+    comparison_df = df[itertools.chain(['Metabolite', 'Formula', 'RT'], grp1_cols, grp2_cols, statistics_col)]
     comparison_df.rename(columns=col_name_change, inplace=True)
     comparison_df.to_csv(f"{os.getcwd()}/output/selected_groups/output.tsv", sep="\t", index=False)
     group_df.to_csv(f"{os.getcwd()}/output/group_colors/groups.tsv", sep="\t", index=False)

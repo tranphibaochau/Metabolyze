@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import sys
-
+import re
 
 # perform imputation per column
 def impute(data_frame, current_col, impute_method=None):
@@ -26,7 +26,7 @@ def impute_table(input_file, impute_method="impute_with_blank_threshold"):
 
     if 'blank_threshold' not in imputed_df.columns:
         raise KeyError("blank_threshold column not found in input_file, please merge it into the dataframe!")
-    standard_columns = [x for x in imputed_df.columns if x.startswith('S') and x != 'blank_threshold' and "blank" not in x.lower()]
+    standard_columns = [x for x in imputed_df.columns if re.match(r'^S\d+', x)]
 
 
 
