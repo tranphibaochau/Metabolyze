@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Add Volcano Plot and Impact Score Plot">
-      <change afterPath="$PROJECT_DIR$/dewey.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dewey.py" afterDir="false" />
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Added Dewey, a script to read and convert sq3lite file and run mspepsearch on it.">
+      <change afterPath="$PROJECT_DIR$/merge_tables_multiple.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/srm_normalization.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculate_fold_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_fold_change.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculate_group_mean.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_group_mean.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculate_impact_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_impact_score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculate_t_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_t_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draw_volcano_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_volcano_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impute_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/impute_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/select_groups_for_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/select_groups_for_visualization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge_tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/merge_tables.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +54,7 @@
     &quot;Python.calculate_blank_threshold.executor&quot;: &quot;Run&quot;,
     &quot;Python.calculate_combined_mean.executor&quot;: &quot;Run&quot;,
     &quot;Python.calculate_fold_change.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey_a4e87d3c51c1b68addab8168bac79ea3.executor&quot;: &quot;Run&quot;,
     &quot;Python.draw_heatmap.executor&quot;: &quot;Run&quot;,
     &quot;Python.draw_heatmap_R_script.executor&quot;: &quot;Debug&quot;,
     &quot;Python.draw_impact_plot.executor&quot;: &quot;Run&quot;,
@@ -68,6 +63,7 @@
     &quot;Python.get_group_ids.executor&quot;: &quot;Run&quot;,
     &quot;Python.impute_table.executor&quot;: &quot;Run&quot;,
     &quot;Python.merge_tables.executor&quot;: &quot;Run&quot;,
+    &quot;Python.merge_tables_multiple.executor&quot;: &quot;Run&quot;,
     &quot;Python.metabolyze.executor&quot;: &quot;Run&quot;,
     &quot;Python.metabolyze_original.executor&quot;: &quot;Run&quot;,
     &quot;Python.pca_analysis.executor&quot;: &quot;Run&quot;,
@@ -75,6 +71,7 @@
     &quot;Python.reshuffle_col.executor&quot;: &quot;Run&quot;,
     &quot;Python.select_columns.executor&quot;: &quot;Run&quot;,
     &quot;Python.select_groups_for_visualization.executor&quot;: &quot;Run&quot;,
+    &quot;Python.srm_normalization.executor&quot;: &quot;Run&quot;,
     &quot;Python.t_test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -95,7 +92,7 @@
       <recent name="C:\Users\cpt289\AppData\Local\Temp\scp16302\home\ubuntu\users\chau\Metabolyze" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.impute_table">
+  <component name="RunManager" selected="Python.merge_tables_multiple (1)">
     <configuration name="calculate_blank_threshold" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
@@ -119,7 +116,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="draw_impact_plot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="merge_tables" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,7 +130,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/draw_impact_plot.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/merge_tables.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,7 +139,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="draw_pca_plot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="merge_tables_multiple (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,12 +148,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="Z:/jonesd28labspace/4 Core Sequences/Sequence_1551/SQ1551-1555 Batch integrate/10 - Features Merge" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Scripts\Metabolyze\draw_pca_plot.py" />
+      <option name="SCRIPT_NAME" value="Z:/jonesd28labspace/4 Core Sequences/Sequence_1551/SQ1551-1555 Batch integrate/10 - Features Merge/merge_tables_multiple.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -165,7 +162,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="draw_volcano_plot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="merge_tables_multiple" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,7 +176,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/draw_volcano_plot.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/merge_tables_multiple.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -188,7 +185,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="impute_table" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="srm_normalization" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -202,7 +199,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/impute_table.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/srm_normalization.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -213,11 +210,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.impute_table" />
-        <item itemvalue="Python.draw_volcano_plot" />
-        <item itemvalue="Python.draw_impact_plot" />
-        <item itemvalue="Python.draw_pca_plot" />
+        <item itemvalue="Python.merge_tables_multiple (1)" />
+        <item itemvalue="Python.merge_tables" />
+        <item itemvalue="Python.srm_normalization" />
         <item itemvalue="Python.calculate_blank_threshold" />
+        <item itemvalue="Python.merge_tables_multiple" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +275,22 @@
       <workItem from="1712932566423" duration="8351000" />
       <workItem from="1713192777250" duration="9868000" />
       <workItem from="1713363001327" duration="5992000" />
-      <workItem from="1713450407123" duration="4574000" />
+      <workItem from="1713450407123" duration="6431000" />
+      <workItem from="1713460182367" duration="2117000" />
+      <workItem from="1713882111417" duration="3246000" />
+      <workItem from="1713970567040" duration="7137000" />
+      <workItem from="1714057687741" duration="1318000" />
+      <workItem from="1714417106189" duration="742000" />
+      <workItem from="1714491616773" duration="34000" />
+      <workItem from="1714571759846" duration="788000" />
+      <workItem from="1714574421134" duration="1505000" />
+      <workItem from="1714608741743" duration="2123000" />
+      <workItem from="1714615628744" duration="2020000" />
+      <workItem from="1714659183634" duration="604000" />
+      <workItem from="1714677147394" duration="1055000" />
+      <workItem from="1714746765528" duration="305000" />
+      <workItem from="1714938874441" duration="613000" />
+      <workItem from="1715006508051" duration="2148000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -392,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712941473543</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added Dewey, a script to read and convert sq3lite file and run mspepsearch on it.">
+      <option name="closed" value="true" />
+      <created>1713457511488</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713457511488</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +440,8 @@
     <MESSAGE value="Update input reading functions to handle both tsv and csv files" />
     <MESSAGE value="Updated PCA plot to be able to show multiple plots depending on the number of groups" />
     <MESSAGE value="Add Volcano Plot and Impact Score Plot" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Volcano Plot and Impact Score Plot" />
+    <MESSAGE value="Added Dewey, a script to read and convert sq3lite file and run mspepsearch on it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Dewey, a script to read and convert sq3lite file and run mspepsearch on it." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -436,25 +457,28 @@
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_group_mean.coverage" NAME="calculate_group_mean Coverage Results" MODIFIED="1711987862123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$select_columns.coverage" NAME="select_columns Coverage Results" MODIFIED="1709223886115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$flux_analysis.coverage" NAME="flux_analysis Coverage Results" MODIFIED="1711470552245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$get_group_ids.coverage" NAME="get_group_ids Coverage Results" MODIFIED="1711336129354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$calculate_combined_mean.coverage" NAME="calculate_combined_mean Coverage Results" MODIFIED="1711996878180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$merge_tables_multiple.coverage" NAME="merge_tables_multiple Coverage Results" MODIFIED="1714575177076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_heatmap_R_script.coverage" NAME="draw_heatmap_R_script Coverage Results" MODIFIED="1712686684734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$calculate_blank_threshold.coverage" NAME="calculate_blank_threshold Coverage Results" MODIFIED="1712806355401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$draw_impact_plot.coverage" NAME="draw_impact_plot Coverage Results" MODIFIED="1712898046272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$reshuffle_col.coverage" NAME="reshuffle_col Coverage Results" MODIFIED="1709744745707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$metabolyze_original.coverage" NAME="metabolyze_original Coverage Results" MODIFIED="1709744307707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/Metabolyze" />
     <SUITE FILE_PATH="coverage/Metabolyze$blank_threshold.coverage" NAME="blank_threshold Coverage Results" MODIFIED="1708714659446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$pearson_correlation.coverage" NAME="pearson_correlation Coverage Results" MODIFIED="1711997329280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_pca_graph.coverage" NAME="draw_pca_graph Coverage Results" MODIFIED="1712868067156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$t_test.coverage" NAME="t_test Coverage Results" MODIFIED="1711476148865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$pca_analysis.coverage" NAME="pca_analysis Coverage Results" MODIFIED="1710995261168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$dewey_a4e87d3c51c1b68addab8168bac79ea3.coverage" NAME="dewey_a4e87d3c51c1b68addab8168bac79ea3 Coverage Results" MODIFIED="1713460715507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Data/Coffee/sqlite" />
+    <SUITE FILE_PATH="coverage/Metabolyze$calculate_fold_change.coverage" NAME="calculate_fold_change Coverage Results" MODIFIED="1711994715994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$merge_tables.coverage" NAME="merge_tables Coverage Results" MODIFIED="1714617285728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$srm_normalization.coverage" NAME="srm_normalization Coverage Results" MODIFIED="1714616429049" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$calculate_combined_mean.coverage" NAME="calculate_combined_mean Coverage Results" MODIFIED="1711996878180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$get_group_ids.coverage" NAME="get_group_ids Coverage Results" MODIFIED="1711336129354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$calculate_blank_threshold.coverage" NAME="calculate_blank_threshold Coverage Results" MODIFIED="1714610183082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$draw_impact_plot.coverage" NAME="draw_impact_plot Coverage Results" MODIFIED="1712898046272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$reshuffle_col.coverage" NAME="reshuffle_col Coverage Results" MODIFIED="1709744745707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$metabolyze_original.coverage" NAME="metabolyze_original Coverage Results" MODIFIED="1709744307707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/Metabolyze" />
     <SUITE FILE_PATH="coverage/Metabolyze$impute_table.coverage" NAME="impute_table Coverage Results" MODIFIED="1713195628907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$metabolyze.coverage" NAME="metabolyze Coverage Results" MODIFIED="1711335028001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/Metabolyze" />
-    <SUITE FILE_PATH="coverage/Metabolyze$t_test.coverage" NAME="t_test Coverage Results" MODIFIED="1711476148865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$select_groups_for_visualization.coverage" NAME="select_groups_for_visualization Coverage Results" MODIFIED="1712764896131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$blank_threshold_correction.coverage" NAME="blank_threshold_correction Coverage Results" MODIFIED="1708620001492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$pca_analysis.coverage" NAME="pca_analysis Coverage Results" MODIFIED="1710995261168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_heatmap.coverage" NAME="draw_heatmap Coverage Results" MODIFIED="1712590838767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$calculate_fold_change.coverage" NAME="calculate_fold_change Coverage Results" MODIFIED="1711994715994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$merge_tables.coverage" NAME="merge_tables Coverage Results" MODIFIED="1712076883573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_volcano_plot.coverage" NAME="draw_volcano_plot Coverage Results" MODIFIED="1712941153098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
