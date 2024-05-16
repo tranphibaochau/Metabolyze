@@ -1,55 +1,10 @@
-import sys
-import time
-import sqlite3
-import subprocess
-import os
-
-__version__ = "0.1"
-# this is a new one
-start_time = time.time()
-
-node_directory = os.getcwd()
-
-study = sys.argv[1]  # .sqlite3
-Metlin = sys.argv[2] == "True"
-NIST = sys.argv[3] == "True"
-LipidBLAST = sys.argv[4] == "True"
-decoy = sys.argv[5] == "True"
-HITS = int(sys.argv[6])
-
-# output: .features
-
-#
-# Actual code begins here...
-#
-
 import tarfile
 import sys
 import time
 import sqlite3
 import subprocess
 import os
-
-
-spectral = sys.argv[1]  # tar file including the spectral libraries
-mspepsearch = sys.argv[2]  # tar file including mspepsearch
-study = sys.argv[1]  # .sqlite3
-Metlin = sys.argv[2] == "True"
-NIST = sys.argv[3] == "True"
-LipidBLAST = sys.argv[4] == "True"
-decoy = sys.argv[5] == "True"
-HITS = int(sys.argv[6])
-
-
-with tarfile.open(spectral, 'r') as spectral:
-    print("List of directories and files inside the tar archive:")
-    root = spectral.getmembers()[0].name
-    spectral_directory = os.getcwd() + root
-
-__version__ = "0.1"
-# this is a new one
-start_time = time.time()
-
+import collections
 
 # output: .features
 
@@ -57,57 +12,56 @@ start_time = time.time()
 # Actual code begins here...
 #
 
+
+start_time = time.time()
+library_path = "C:\\Scripts"  # tar file including the spectral libraries
+#mspepsearch = sys.argv[2]  # tar file including mspepsearch
+
+files = os.listdir(library_path)
+
+directories = []
 libraries = []
-
-libraries.append(spectral_directory + "/LIB")
-libraries.append(spectral_directory + "/data/nist_msms")
-libraries = []
-
-if NIST:
-    libraries.append(spectral_directory + "/LIB")
-    libraries.append(spectral_directory + "/data/nist_msms")
-    if decoy:
-        libraries.append(spectral_directory + "/LIB")
-        libraries.append(spectral_directory + "/data/DECOY_nist_msms")
-
-if Metlin:
-    libraries.append(spectral_directory + "/LIB")
-    libraries.append(spectral_directory + "/data/METLIN_EXPERIMENTAL")
-    if decoy:
-        libraries.append(spectral_directory + "/LIB")
-        libraries.append(spectral_directory + "/data/DECOY_METLIN_EXPERIMENTAL")
-
-if LipidBLAST:
-    libraries.append(spectral_directory + "/LIB")
-    libraries.append(spectral_directory + "/data/LipidBlast_MBX")
-    if decoy:
-        libraries.append(spectral_directory + "/LIB")
-        libraries.append(spectral_directory + "/data/DECOY_LipidBlast_MBX")
-
-if not libraries:
-    print("No spectral library specified!!!", flush=True, file=sys.stderr)
-    sys.exit(-1)
+# Iterate through each file
+for file in files:
+    # Check if the file is a tar file
+    if file.endswith('.tar'):
+        # Create a full path to the tar file
+        tar_file = os.path.join(library_path, file)
 
 
-class Thing:
-    def __getitem__(self, key):
-        return getattr(self, key)
+        # Open the tar file
+        with tarfile.open(tar_file, 'r') as tar:
+            extract_folder = tar.getmembers()[0].name
+            if not os.path.exists(os.path.join(library_path, extract_folder)):
+                # Extract all contents
+                tar.extractall(path=library_path)
+            for folder in tar.getmembers():
+                # Check if the member is a directory
+                if folder.isdir():
+                    # add the folders into the libraries
+                    libraries.append(folder.name.split("/")[-1])
+                    directories.append(os.path.join(library_path, folder.name))
 
-    def __setitem__(self, key, value):
-        setattr(self, key, value)
 
-
+libraries = " ".join(libraries)
+cmd_env = {} # create a dictionary to store locations of the environment
+mspepsearch_maker = collections.namedtuple("libraries", libraries)
+cmd_env["mspepsearch"] = mspepsearch_maker._make(directories)
+print(cmd_env["mspepsearch"])
+exec (cmd_complete_code, cmd_env)
+#with open(new_cmd_file_name + ".done", "w") as finito:
+#    print("Finished!", file=finito)
 # By convention, we require access to a parameter (in this case NIST) prior to taking an action which
 # modifies the system, this is for the bizarre case where someone might attempt to run a command template
 # directly from the command line -- this should fail due access to an undefined parameter _before_ any
 # damage is done to the system.
 
-out = open(
-    f"{os.getcwd()}/output/DeweyOutput/output.features", "w")
+out = open(__file__[:-3] + ".features", "w")
 
 #
 # Set up our cursor
 #
+study = "C:\Scripts\\SQ0000_large_coffee.sqlite3"
 con = sqlite3.connect(study)
 cur = con.cursor()
 
@@ -117,14 +71,14 @@ cur = con.cursor()
 #
 
 sample_num = cur.execute(
-    "SELECT COUNT (DISTINCT name) from rawfile where ID > 0").fetchone()[0]
+    "SELECT COUNT (DISTINCT name) from rawfile where ID > 0"
+).fetchone()[0]
 observed = cur.execute(
-    "SELECT COUNT (DISTINCT rawfile) from scans where rawfile > 0").fetchone(
-    )[0]
+    "SELECT COUNT (DISTINCT rawfile) from scans where rawfile > 0"
+).fetchone()[0]
 
 if sample_num != observed:
-    print("Sanity check failure: expected samples != observed files!!!",
-          flush=True, file=sys.stderr)
+    print("Sanity check failure: expected samples != observed files!!!", file=sys.stderr, flush=True)
     sys.exit(-1)
 
 #
@@ -141,7 +95,8 @@ try:
     ).fetchone()[0]
 except:
     mass_translation_factor = 10000  # 1 = 0.0001 Da
-    time_translation_factor = 1000  # 1 = 0.001 seconds
+    time_translation_factor = 1000   # 1 = 0.001 seconds
+
 
 FILE_SQL = """SELECT rawfile.id, rawfile.name FROM rawfile WHERE rawfile.id > 0 ORDER BY rawfile.id ASC"""
 SCAN_SQL = """SELECT scans.scan_ID, scans.rt, scans.precursor, scans.scan_type FROM scans WHERE scans.rawfile = ? ORDER BY scans.scan_ID ASC"""
@@ -159,12 +114,10 @@ scan_loader_scan_counter = 0
 all_scans = {}
 for (rawid, fname) in all_filenames.items():
     scan_loader_counter += 1
-    print(
-        f"processing {fname} ({scan_loader_counter}) / ({len(all_filenames.items())})",
-        flush=True)
+    print(f"processing {fname} ({scan_loader_counter}) / ({len(all_filenames.items())})", file=sys.stderr, flush=True)
     scans = {}
     prev_ms1 = None
-    for x in cur.execute(SCAN_SQL, (rawid, )):
+    for x in cur.execute(SCAN_SQL, (rawid,)):
         if x[3] == "MS1":
             prev_ms1 = x[1]
         else:
@@ -172,9 +125,7 @@ for (rawid, fname) in all_filenames.items():
             scans[x[1]] = [x[0], x[2], prev_ms1]
     all_scans[rawid] = scans
 scan_loader_stop = time.time()
-print(
-    f"{scan_loader_scan_counter} scans loaded in {scan_loader_stop - scan_loader_start:.2f} seconds",
-    flush=True)
+print(f"{scan_loader_scan_counter} scans loaded in {scan_loader_stop - scan_loader_start:.2f} seconds", file=sys.stderr, flush=True)
 
 #
 # MGF Generation and Search
@@ -189,8 +140,7 @@ prev_rt = -1
 prev_rawid = None
 scan_count = 0
 peak_count = 0
-peaks = [
-]  # Technically this gets taken care of in the loop, but still, defensive programming etc...
+peaks = []  # Technically this gets taken care of in the loop, but still, defensive programming etc...
 peak_counter = 0  # TODO: duplicate counter used purely for visual feedback, should be removed.
 for (rawid, rt, mz, intensity) in cur.execute(PEAK_SQL):
     # NOTE: rt and mz are still raw integers unmodified by time and mass factors!!!
@@ -207,27 +157,22 @@ for (rawid, rt, mz, intensity) in cur.execute(PEAK_SQL):
         prev_rt = rt
         prev_rawid = rawid
         scan_count += 1
-        pepmass = all_scans[rawid][rt][
-            1]  # this is still a raw mz integer from the sqlite file...
+        pepmass = all_scans[rawid][rt][1]  # this is still a raw mz integer from the sqlite file...
         print("BEGIN IONS", file=mgf)
         if pepmass > 0:
-            print(f"TITLE={all_filenames[rawid]}.{all_scans[rawid][rt][0]}.+",
-                  file=mgf)
+            print(f"TITLE={all_filenames[rawid]}.{all_scans[rawid][rt][0]}.+", file=mgf)
             print("CHARGE=127+", file=mgf)
         else:
-            print(f"TITLE={all_filenames[rawid]}.{all_scans[rawid][rt][0]}.-",
-                  file=mgf)
+            print(f"TITLE={all_filenames[rawid]}.{all_scans[rawid][rt][0]}.-", file=mgf)
             print("CHARGE=128-", file=mgf)
         print(f"RTINSECONDS={float(rt / time_translation_factor)}", file=mgf)
         if pepmass > 0:
-            print(f"PEPMASS={float(pepmass / mass_translation_factor)}",
-                  file=mgf)
+            print(f"PEPMASS={float(pepmass / mass_translation_factor)}", file=mgf)
         else:
-            print(f"PEPMASS={-1 * float(pepmass / mass_translation_factor)}",
-                  file=mgf)
+            print(f"PEPMASS={-1 * float(pepmass / mass_translation_factor)}", file=mgf)
     peak_count += 1
     if mz < 0:
-        peaks = [(float((-mz) / mass_translation_factor), intensity)] + peaks
+        peaks = [(float( (-mz) / mass_translation_factor) , intensity)] + peaks
     else:
         peaks.append((float(mz / mass_translation_factor), intensity))
 # Finalize Last Scan...
@@ -239,40 +184,56 @@ stop_query = time.time()
 mgf.close()
 
 mgf_make_stop = time.time()
-print(f"MGF created in {mgf_make_stop - mgf_make_start:.2f} seconds.",
-      flush=True)
-print(
-    f"sql2mgf phase processed {peak_count} peaks and {scan_count} scans from {len(all_filenames)} files in {mgf_make_stop - start_time :.2f} seconds.",
-    flush=True)
-print("", flush=True)
-print("----------------", flush=True)
-print("", flush=True)
-
-with open("test.txt", "w+") as test:
-    subprocess.run([
-        "/data/mspepsearch/mspepsearch", "d", "a", "v", "l", "G", "/Z", "0.01",
-        "/M", "0.05", "/INP", seq_name + ".mgf"
-    ] + libraries + [
-        "/OUTTAB", seq_name + ".txt", "/HITS", f"{HITS}", "/MinMF", "1",
-        "/OutPrecursorType", "/OutChemForm", "/OutPrecursorMZ", "/OnlyFound"
-    ], stderr=test)
-print("", flush=True)
-print("----------------", flush=True)
-print("", flush=True)
+print(f"MGF created in {mgf_make_stop - mgf_make_start:.2f} seconds.", file=sys.stderr, flush=True)
+print(f"sql2mgf phase processed {peak_count} peaks and {scan_count} scans from {len(all_filenames)} files in {mgf_make_stop - start_time :.2f} seconds.", file=sys.stderr, flush=True)
+print("", file=sys.stderr, flush=True)
+print("----------------", file=sys.stderr, flush=True)
+print("", file=sys.stderr, flush=True)
+if mspepsearch.platform == "win32":
+    subprocess.run([mspepsearch.path, "d", "a", "v", "l", "G", "/Z", "0.01", "/M", "0.05", "/MatchPolarity", "/INP", seq_name + ".mgf"] + directories + ["/OUTTAB", seq_name + ".txt", "/HITS", f"{HITS}", "/MinMF", "1", "/OutPrecursorType", "/OutIK", "/OutChemForm", "/OutPrecursorMZ", "/OnlyFound"], stdout=subprocess.DEVNULL, shell=True)
+else:
+    subprocess.run([mspepsearch.path, "d", "a", "v", "l", "G", "/Z", "0.01", "/M", "0.05", "/INP", seq_name + ".mgf"] + directories + ["/OUTTAB", seq_name + ".txt", "/HITS", f"{HITS}", "/MinMF", "1", "/OutPrecursorType", "/OutChemForm", "/OutPrecursorMZ", "/OnlyFound"], stdout=subprocess.DEVNULL)
+print("", file=sys.stderr, flush=True)
+print("----------------", file=sys.stderr, flush=True)
+print("", file=sys.stderr, flush=True)
 
 f = open(seq_name + ".txt")
 
-print(
-    "Source\tMCRL_Score\tScore\tDot\tRevDot\tProb\tMetabolite\tFormula\tIon Type\tRT (min)",
-    file=out)
-for line in f:
-    if line.startswith(">") or line.startswith("Unknown"):
-        continue
-    vals = line.strip().split("\t")
-    rt = float(vals[0].split(":")[1])
-    # 0.01 because python rounds 1.5 _down_... (!?!)
-    print(
-        f"{vals[0]}\t{round(0.01 + (int(vals[8])+int(vals[10]))/2)}\t{vals[7]}\t{vals[8]}\t{vals[10]}\t{vals[9]}\t{vals[11]}\t{vals[13]}\t{vals[14]}\t{rt}",
-        file=out)
+# Used to produce these here:
+#
+# \tRT Start (min)\tRT End (min)\tm/z Tolerance (ppm)\tRT Tolerance (min)
+# \t{max(rt - RT_WINDOW, 0.0):.02f}\t{rt + RT_WINDOW:.02f}\t{MZ_TOLERANCE:.2f}\t{RT_TOLERANCE:.2f}
+#
+# Using these:
+#
+# MZ_TOLERANCE: 15.0
+# RT_TOLERANCE: 0.2
+# RT_WINDOW: 0.25
+#
+# MZ_TOLERANCE is specified in ppm and corresponds to the tolerance parameter ultimately used by skeleton quantitation.
+# RT_TOLERANCE is specified in minutes and corresponds to the tolerance used by the skeleton quantitation.
+# RT_WINDOW is used to bracket the location of the MS2 ID -- it indirectly controls first phase of skeleton.
+
+if mspepsearch.platform == "win32":
+    print("Source\tMCRL_Score\tScore\tDot\tRevDot\tProb\tMetabolite\tInChIKey\tFormula\tIon Type\tRT (min)", file=out)
+    for line in f:
+        if line.startswith(">") or line.startswith("Unknown"):
+            continue
+        vals = line.strip().split("\t")
+        rt = float(vals[0].split(":")[1])
+        inchikey = ""
+        if len(vals) > 19:
+            inchikey = vals[19]
+        # 0.01 because python rounds 1.5 _down_... (!?!)
+        print(f"{vals[0]}\t{round(0.01 + (int(vals[9])+int(vals[11]))/2)}\t{vals[8]}\t{vals[9]}\t{vals[11]}\t{vals[10]}\t{vals[12]}\t{inchikey}\t{vals[14]}\t{vals[15]}\t{rt}", file=out)
+else:
+    print("Source\tMCRL_Score\tScore\tDot\tRevDot\tProb\tMetabolite\tFormula\tIon Type\tRT (min)", file=out)
+    for line in f:
+        if line.startswith(">") or line.startswith("Unknown"):
+            continue
+        vals = line.strip().split("\t")
+        rt = float(vals[0].split(":")[1])
+        # 0.01 because python rounds 1.5 _down_... (!?!)
+        print(f"{vals[0]}\t{round(0.01 + (int(vals[8])+int(vals[10]))/2)}\t{vals[7]}\t{vals[8]}\t{vals[10]}\t{vals[9]}\t{vals[11]}\t{vals[13]}\t{vals[14]}\t{rt}", file=out)
 out.close()
 f.close()

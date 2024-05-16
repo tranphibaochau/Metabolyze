@@ -1,0 +1,25 @@
+{
+  "node_title": "Dewey Libraries",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Spectral Libraries",
+      "type": "socket",
+      "socket_type": "many_to_one"
+    },
+    {
+      "name": "MS Pep Search Library",
+      "type": "socket",
+      "socket_type": "many_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "libraries",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

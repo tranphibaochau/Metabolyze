@@ -1,0 +1,25 @@
+{
+  "node_title": "Dewey MS Pepsearch",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Libraries (must contain MSPepSearch_x64)",
+      "type": "socket",
+      "socket_type": "many_to_one"
+    },
+    {
+      "name": "mgf input file",
+      "type": "socket",
+      "socket_type": "many_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "mspepsearch",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
