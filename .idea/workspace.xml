@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Added helper functions">
-      <change afterPath="$PROJECT_DIR$/dewey_mgf_generation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dewey_mgf_schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dewey_mspepsearch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dewey_mspepsearch_schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dewey_schema.json" afterDir="false" />
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Break dewey.py into different components">
+      <change afterPath="$PROJECT_DIR$/crop_msi_images.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xtreamify.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dewey.py" beforeDir="false" afterPath="$PROJECT_DIR$/dewey.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Metabolyze.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/dewey_mspepsearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/dewey_mspepsearch_schema.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,59 +55,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.blank_threshold.executor": "Run",
-    "Python.blank_threshold_correction.executor": "Run",
-    "Python.calculate_blank_threshold.executor": "Run",
-    "Python.calculate_combined_mean.executor": "Run",
-    "Python.calculate_fold_change.executor": "Run",
-    "Python.columns_merge.executor": "Run",
-    "Python.dewey.executor": "Run",
-    "Python.dewey_a4e87d3c51c1b68addab8168bac79ea3.executor": "Run",
-    "Python.dewey_mgf_generation.executor": "Run",
-    "Python.dewey_mspepsearch.executor": "Run",
-    "Python.draw_heatmap.executor": "Run",
-    "Python.draw_heatmap_R_script.executor": "Debug",
-    "Python.draw_impact_plot.executor": "Run",
-    "Python.draw_pca_graph.executor": "Run",
-    "Python.draw_volcano_plot.executor": "Run",
-    "Python.get_group_ids.executor": "Run",
-    "Python.impute_blank_threshold.executor": "Run",
-    "Python.impute_table.executor": "Run",
-    "Python.merge_tables.executor": "Run",
-    "Python.merge_tables_multiple.executor": "Run",
-    "Python.metabolyze.executor": "Run",
-    "Python.metabolyze_original.executor": "Run",
-    "Python.pca_analysis.executor": "Run",
-    "Python.pearson_correlation.executor": "Run",
-    "Python.reshuffle_col.executor": "Run",
-    "Python.select_columns.executor": "Run",
-    "Python.select_groups_for_visualization.executor": "Run",
-    "Python.srm_normalization (1).executor": "Run",
-    "Python.srm_normalization.executor": "Run",
-    "Python.t_test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Scripts/Metabolyze",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.basalt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.blank_threshold.executor&quot;: &quot;Run&quot;,
+    &quot;Python.blank_threshold_correction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_blank_threshold.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_combined_mean.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_fold_change.executor&quot;: &quot;Run&quot;,
+    &quot;Python.columns_merge.executor&quot;: &quot;Run&quot;,
+    &quot;Python.crop_msi_images.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey_a4e87d3c51c1b68addab8168bac79ea3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey_mgf_generation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey_mspepsearch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_heatmap.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_heatmap_R_script.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.draw_impact_plot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_pca_graph.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_volcano_plot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_group_ids.executor&quot;: &quot;Run&quot;,
+    &quot;Python.impute_blank_threshold.executor&quot;: &quot;Run&quot;,
+    &quot;Python.impute_table.executor&quot;: &quot;Run&quot;,
+    &quot;Python.merge_tables.executor&quot;: &quot;Run&quot;,
+    &quot;Python.merge_tables_multiple.executor&quot;: &quot;Run&quot;,
+    &quot;Python.metabolyze.executor&quot;: &quot;Run&quot;,
+    &quot;Python.metabolyze_original.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pca_analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pearson_correlation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.reshuffle_col.executor&quot;: &quot;Run&quot;,
+    &quot;Python.select_columns.executor&quot;: &quot;Run&quot;,
+    &quot;Python.select_groups_for_visualization.executor&quot;: &quot;Run&quot;,
+    &quot;Python.srm_normalization (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.srm_normalization.executor&quot;: &quot;Run&quot;,
+    &quot;Python.t_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Scripts/Metabolyze&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Scripts\Metabolyze" />
       <recent name="C:\Users\cpt289\AppData\Local\Temp\scp16302\home\ubuntu\users\chau\Metabolyze" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.dewey_mspepsearch">
-    <configuration name="columns_merge" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.crop_msi_images">
+    <configuration name="basalt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -112,12 +119,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="Z:/jonesd28labspace/4 Core Sequences/Sequence_1551/SQ1551-1555 Batch integrate/7 - Columns Merge" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Downloads/complete_workflow/complete_workflow/output/xtream/output/bg_xtream" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="Z:/jonesd28labspace/4 Core Sequences/Sequence_1551/SQ1551-1555 Batch integrate/7 - Columns Merge/columns_merge.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Downloads/complete_workflow/complete_workflow/output/xtream/output/bg_xtream/basalt.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -126,7 +133,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dewey" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="crop_msi_images" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -140,7 +147,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dewey.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/crop_msi_images.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -195,7 +202,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="srm_normalization (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -204,12 +211,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="Z:/jonesd28labspace/4 Core Sequences/Sequence_1551/SQ1551-1555 Batch integrate/6 - SRM Normalization" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="Z:/jonesd28labspace/4 Core Sequences/Sequence_1551/SQ1551-1555 Batch integrate/6 - SRM Normalization/srm_normalization.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -220,11 +227,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.crop_msi_images" />
+        <item itemvalue="Python.basalt" />
         <item itemvalue="Python.dewey_mspepsearch" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.dewey_mgf_generation" />
-        <item itemvalue="Python.dewey" />
-        <item itemvalue="Python.columns_merge" />
-        <item itemvalue="Python.srm_normalization (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -309,7 +316,26 @@
       <workItem from="1715274196421" duration="4905000" />
       <workItem from="1715282411902" duration="2074000" />
       <workItem from="1715697920431" duration="5395000" />
-      <workItem from="1715782814268" duration="8603000" />
+      <workItem from="1715782814268" duration="14512000" />
+      <workItem from="1715869419040" duration="8549000" />
+      <workItem from="1716172100863" duration="2779000" />
+      <workItem from="1716293228768" duration="658000" />
+      <workItem from="1716321765651" duration="22000" />
+      <workItem from="1718855258880" duration="3581000" />
+      <workItem from="1718892173821" duration="59000" />
+      <workItem from="1718896601734" duration="798000" />
+      <workItem from="1718904312145" duration="2082000" />
+      <workItem from="1719244273607" duration="4041000" />
+      <workItem from="1719325699763" duration="3029000" />
+      <workItem from="1719420979601" duration="2499000" />
+      <workItem from="1719502951954" duration="2764000" />
+      <workItem from="1719862150360" duration="893000" />
+      <workItem from="1719932202693" duration="603000" />
+      <workItem from="1719934473008" duration="4175000" />
+      <workItem from="1720445752314" duration="2761000" />
+      <workItem from="1720448552801" duration="4755000" />
+      <workItem from="1720466705585" duration="7025000" />
+      <workItem from="1721229361227" duration="108000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -439,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715009193729</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Break dewey.py into different components">
+      <option name="closed" value="true" />
+      <created>1715822821679</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715822821679</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,7 +503,8 @@
     <MESSAGE value="Add Volcano Plot and Impact Score Plot" />
     <MESSAGE value="Added Dewey, a script to read and convert sq3lite file and run mspepsearch on it." />
     <MESSAGE value="Added helper functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added helper functions" />
+    <MESSAGE value="Break dewey.py into different components" />
+    <option name="LAST_COMMIT_MESSAGE" value="Break dewey.py into different components" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_group_mean.coverage" NAME="calculate_group_mean Coverage Results" MODIFIED="1711987862123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -480,7 +515,7 @@
     <SUITE FILE_PATH="coverage/Metabolyze$dewey.coverage" NAME="dewey Coverage Results" MODIFIED="1715230091860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$blank_threshold.coverage" NAME="blank_threshold Coverage Results" MODIFIED="1708714659446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$pearson_correlation.coverage" NAME="pearson_correlation Coverage Results" MODIFIED="1711997329280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$dewey_mspepsearch.coverage" NAME="dewey_mspepsearch Coverage Results" MODIFIED="1715801628524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$dewey_mspepsearch.coverage" NAME="dewey_mspepsearch Coverage Results" MODIFIED="1715878419123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_pca_graph.coverage" NAME="draw_pca_graph Coverage Results" MODIFIED="1712868067156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$t_test.coverage" NAME="t_test Coverage Results" MODIFIED="1711476148865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$srm_normalization__1_.coverage" NAME="srm_normalization (1) Coverage Results" MODIFIED="1715012218678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="Z:/jonesd28labspace/4 Core Sequences/Sequence_1551/SQ1551-1555 Batch integrate/6 - SRM Normalization" />
@@ -497,12 +532,15 @@
     <SUITE FILE_PATH="coverage/Metabolyze$draw_impact_plot.coverage" NAME="draw_impact_plot Coverage Results" MODIFIED="1712898046272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$reshuffle_col.coverage" NAME="reshuffle_col Coverage Results" MODIFIED="1709744745707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$metabolyze_original.coverage" NAME="metabolyze_original Coverage Results" MODIFIED="1709744307707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/Metabolyze" />
+    <SUITE FILE_PATH="coverage/Metabolyze$basalt.coverage" NAME="basalt Coverage Results" MODIFIED="1720446077908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/complete_workflow/complete_workflow/output/xtream/output/bg_xtream" />
     <SUITE FILE_PATH="coverage/Metabolyze$impute_table.coverage" NAME="impute_table Coverage Results" MODIFIED="1713195628907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$metabolyze.coverage" NAME="metabolyze Coverage Results" MODIFIED="1711335028001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/Metabolyze" />
     <SUITE FILE_PATH="coverage/Metabolyze$select_groups_for_visualization.coverage" NAME="select_groups_for_visualization Coverage Results" MODIFIED="1712764896131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$blank_threshold_correction.coverage" NAME="blank_threshold_correction Coverage Results" MODIFIED="1708620001492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_heatmap.coverage" NAME="draw_heatmap Coverage Results" MODIFIED="1712590838767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$crop_msi_images.coverage" NAME="crop_msi_images Coverage Results" MODIFIED="1720474746847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$dewey_mgf_generation.coverage" NAME="dewey_mgf_generation Coverage Results" MODIFIED="1715282542258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Metabolyze$test.coverage" NAME="test Coverage Results" MODIFIED="1715833245503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_volcano_plot.coverage" NAME="draw_volcano_plot Coverage Results" MODIFIED="1712941153098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
