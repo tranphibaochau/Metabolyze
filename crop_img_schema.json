@@ -1,0 +1,40 @@
+{
+  "node_title": "Crop Images By Coordinates",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input Folder",
+      "type": "socket",
+      "socket_type": "many_to_one"
+    },
+    {
+      "name": "Left Coordinate",
+      "type": "number",
+      "value": "550"
+    },
+    {
+      "name": "Top Coordinate",
+      "type": "number",
+      "value": "100"
+    },
+    {
+      "name": "Right Coordinate",
+      "type": "number",
+      "value": "50"
+    },
+    {
+      "name": "Bottom Coordinate",
+      "type": "number",
+      "value": "100"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "crop_img",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

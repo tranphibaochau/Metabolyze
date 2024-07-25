@@ -1,0 +1,25 @@
+{
+  "node_title": "Replace Values",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File 1",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Input File 2",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "replace_values",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

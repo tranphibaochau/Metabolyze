@@ -68,8 +68,6 @@ if 'nist_msms' not in paths:
 for dir in directories[1:-1]:
     subprocess_command.extend(["/LIB", dir]) # specify input and output files
 subprocess_command.extend(["/OUTTAB", f"{os.getcwd()}/output.txt"])
-print(subprocess_command)
-print(directories)
 subprocess.run(subprocess_command, stdout=subprocess.DEVNULL)
 #subprocess.run(["wine", f"{paths['MSPepSearch_x64']}/MSPepSearch.exe", "d", "a", "v", "l", "G", "/Z", "0.01", "/M", "0.05", "/INP", seq_name] + ["/LIB", f"{paths['nist_msms']}"] + ["/OUTTAB", f"{os.getcwd()}/output/mspepsearch/potato.txt"], stdout=subprocess.DEVNULL)
 print("", file=sys.stderr, flush=True)

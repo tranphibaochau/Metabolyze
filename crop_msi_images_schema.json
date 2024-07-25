@@ -1,0 +1,45 @@
+{
+  "node_title": "Crop MSI Images",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input Folder",
+      "type": "socket",
+      "socket_type": "many_to_one"
+    },
+    {
+      "name": "x1 Coordinate",
+      "type": "number",
+      "value": "250"
+    },
+    {
+      "name": "X2 Coordinate",
+      "type": "number",
+      "value": "450"
+    },
+    {
+      "name": "X3 Coordinate",
+      "type": "number",
+      "value": "700"
+    },
+    {
+      "name": "Output Image Width",
+      "type": "number",
+      "value": "500"
+    },
+    {
+      "name": "Output Image Height",
+      "type": "number",
+      "value": "500"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "crop_msi_images",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

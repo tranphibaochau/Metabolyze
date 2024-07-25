@@ -1,6 +1,16 @@
 from PIL import Image
 import os
 from collections import defaultdict
+import sys
+
+
+input_folder = sys.argv[1]
+x1 = int(sys.argv[2])
+x2 = int(sys.argv[3])
+x3 = int(sys.argv[4])
+output_width = int(sys.argv[5])
+output_height = int(sys.argv[6])
+
 def find_non_black_pixels(img):
     img = img.convert("RGB")  # ensure the image is in RGB mode
     width, height = img.size
@@ -49,23 +59,20 @@ def find_non_black_pixels(img):
     return coords
 
 
-def crop_images(image_path, x_coords, output_folder):
-    os.makedirs(output_folder, exist_ok=True)
-    files = os.listdir(image_path)
+def crop_msi_images(x1, x2, x3, output_width, output_height):
+    # ensure coordinates are in correct order and within image bounds
+    if not (0 <= x1 < x2 < x3):
+        raise ValueError("X-coordinates must be in increasing order!")
+    files = os.listdir(input_folder)
 
     for image_file in files:
         img_name = image_file.split("(")[0]  # get part of the input file name
         img_name = img_name.split(".png")[0]
         # first, crop out the blank region and metadata of the images
-        with Image.open(os.path.join(image_path,image_file)) as img:
+        with Image.open(os.path.join(input_folder, image_file)) as img:
             width, height = img.size
-            img = img.crop((550, 80, width-60, height-150))
-            width, height = img.size
-            x1, x2, x3 = x_coords  # get the x-coordinates to divide the slide image into 4 parts
-
-            # ensure coordinates are in correct order and within image bounds
-            if not (0 <= x1 < x2 < x3 <= width):
-                raise ValueError("X-coordinates must be in increasing order and within image width bounds.")
+            if x3 < width:
+                raise ValueError("X-coordinates must within image width bounds!")
 
             # define the bounding boxes for the four segments
             boxes = [
@@ -76,11 +83,7 @@ def crop_images(image_path, x_coords, output_folder):
             ]
             output_paths = []
             for i in range(1, 5):
-                if i<3:
-                    output_paths.append(os.path.join(output_folder, f"{img_name}_s{i}_R.png"))
-                else:
-                    output_paths.append(os.path.join(output_folder, f"{img_name}_s{i}_NR.png"))
-
+                output_paths.append(os.path.join(f"{os.getcwd()}/output/crop_msi_images/", f"{img_name}_s{i}.png"))
             # crop and save
             for box, output_path in zip(boxes, output_paths):
                 cropped_img = img.crop(box)
@@ -91,17 +94,17 @@ def crop_images(image_path, x_coords, output_folder):
                 right = coords["right_most"][0] + 20
                 bottom = coords["bottom_most"][1] + 20
                 cropped_img = cropped_img.crop((left, top, right, bottom))
-                new_image = Image.new('RGB', (500, 500), (0, 0, 0))
-
-                # Calculate the position to paste the original image onto the new image
-                paste_position = ((500 - cropped_img.width) // 2, (500 - cropped_img.height) // 2)
-
-                # Paste the original image onto the new image
-                new_image.paste(cropped_img, paste_position)
-                new_image.save(output_path)
-                print(f"Cropped image saved to {output_path}")
-    print("Finished!")
+                # if cropped image is larger than output width and output height, it will override the size
+                if cropped_img.width > output_width or cropped_img.height > output_height:
+                    cropped_img.save(output_path)
+                else:
+                    new_image = Image.new('RGB', (output_width, output_height), (0, 0, 0))
+                    # Calculate the position to paste the original image onto the new image
+                    paste_position = ((output_width - cropped_img.width) // 2, (output_height - cropped_img.height) // 2)
+                    # Paste the original image onto the new image
+                    new_image.paste(cropped_img, paste_position)
+                    new_image.save(output_path)
 
 # Example usage
-crop_images('SQ1633_1915x846', [160, 440, 800], 'SQ1633_1915x846_cropped')
+crop_msi_images(x1, x2, x3, 500, 500)
 
