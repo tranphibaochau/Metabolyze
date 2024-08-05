@@ -13,17 +13,17 @@
     {
       "name": "x1 Coordinate",
       "type": "number",
-      "value": "250"
+      "value": "0"
     },
     {
       "name": "X2 Coordinate",
       "type": "number",
-      "value": "450"
+      "value": "0"
     },
     {
       "name": "X3 Coordinate",
       "type": "number",
-      "value": "700"
+      "value": "0"
     },
     {
       "name": "Output Image Width",
