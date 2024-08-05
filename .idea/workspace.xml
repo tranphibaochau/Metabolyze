@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Added script to crop MSI images">
-      <change afterPath="$PROJECT_DIR$/crop_img.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crop_img_schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crop_msi_images_schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/replace_values.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/replace_values_schema.json" afterDir="false" />
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Modify scripts to be able to run on the executive">
+      <change afterPath="$PROJECT_DIR$/cluster_images.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cluster_images_schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_correlation_matrix.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_correlation_matrix_schema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crop_msi_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/crop_msi_images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/dewey_mspepsearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crop_img.py" beforeDir="false" afterPath="$PROJECT_DIR$/crop_img.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crop_img_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/crop_img_schema.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,55 +50,55 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.basalt.executor": "Run",
-    "Python.blank_threshold.executor": "Run",
-    "Python.blank_threshold_correction.executor": "Run",
-    "Python.calculate_blank_threshold.executor": "Run",
-    "Python.calculate_combined_mean.executor": "Run",
-    "Python.calculate_fold_change.executor": "Run",
-    "Python.columns_merge.executor": "Run",
-    "Python.crop_img.executor": "Run",
-    "Python.crop_msi_images.executor": "Run",
-    "Python.dewey.executor": "Run",
-    "Python.dewey_a4e87d3c51c1b68addab8168bac79ea3.executor": "Run",
-    "Python.dewey_mgf_generation.executor": "Run",
-    "Python.dewey_mspepsearch.executor": "Run",
-    "Python.draw_heatmap.executor": "Run",
-    "Python.draw_heatmap_R_script.executor": "Debug",
-    "Python.draw_impact_plot.executor": "Run",
-    "Python.draw_pca_graph.executor": "Run",
-    "Python.draw_volcano_plot.executor": "Run",
-    "Python.get_group_ids.executor": "Run",
-    "Python.impute_blank_threshold.executor": "Run",
-    "Python.impute_table.executor": "Run",
-    "Python.merge_tables.executor": "Run",
-    "Python.merge_tables_multiple.executor": "Run",
-    "Python.metabolyze.executor": "Run",
-    "Python.metabolyze_original.executor": "Run",
-    "Python.pca_analysis.executor": "Run",
-    "Python.pearson_correlation.executor": "Run",
-    "Python.reshuffle_col.executor": "Run",
-    "Python.select_columns.executor": "Run",
-    "Python.select_groups_for_visualization.executor": "Run",
-    "Python.srm_normalization (1).executor": "Run",
-    "Python.srm_normalization.executor": "Run",
-    "Python.t_test.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Scripts/Metabolyze",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.basalt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.blank_threshold.executor&quot;: &quot;Run&quot;,
+    &quot;Python.blank_threshold_correction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_blank_threshold.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_combined_mean.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_fold_change.executor&quot;: &quot;Run&quot;,
+    &quot;Python.columns_merge.executor&quot;: &quot;Run&quot;,
+    &quot;Python.crop_img.executor&quot;: &quot;Run&quot;,
+    &quot;Python.crop_msi_images.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey_a4e87d3c51c1b68addab8168bac79ea3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey_mgf_generation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dewey_mspepsearch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_heatmap.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_heatmap_R_script.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.draw_impact_plot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_pca_graph.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draw_volcano_plot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_group_ids.executor&quot;: &quot;Run&quot;,
+    &quot;Python.impute_blank_threshold.executor&quot;: &quot;Run&quot;,
+    &quot;Python.impute_table.executor&quot;: &quot;Run&quot;,
+    &quot;Python.merge_tables.executor&quot;: &quot;Run&quot;,
+    &quot;Python.merge_tables_multiple.executor&quot;: &quot;Run&quot;,
+    &quot;Python.metabolyze.executor&quot;: &quot;Run&quot;,
+    &quot;Python.metabolyze_original.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pca_analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pearson_correlation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.reshuffle_col.executor&quot;: &quot;Run&quot;,
+    &quot;Python.select_columns.executor&quot;: &quot;Run&quot;,
+    &quot;Python.select_groups_for_visualization.executor&quot;: &quot;Run&quot;,
+    &quot;Python.srm_normalization (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.srm_normalization.executor&quot;: &quot;Run&quot;,
+    &quot;Python.t_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Scripts/Metabolyze&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Scripts\Metabolyze" />
@@ -334,7 +333,10 @@
       <workItem from="1720466705585" duration="7025000" />
       <workItem from="1721229361227" duration="3856000" />
       <workItem from="1721240491810" duration="53000" />
-      <workItem from="1721846987616" duration="3393000" />
+      <workItem from="1721846987616" duration="3473000" />
+      <workItem from="1722610693592" duration="5140000" />
+      <workItem from="1722620131287" duration="5301000" />
+      <workItem from="1722810196998" duration="1507000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -488,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721229555515</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Modify scripts to be able to run on the executive">
+      <option name="closed" value="true" />
+      <created>1721880423876</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1721880423876</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,7 +530,8 @@
     <MESSAGE value="Added helper functions" />
     <MESSAGE value="Break dewey.py into different components" />
     <MESSAGE value="Added script to crop MSI images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added script to crop MSI images" />
+    <MESSAGE value="Modify scripts to be able to run on the executive" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify scripts to be able to run on the executive" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_group_mean.coverage" NAME="calculate_group_mean Coverage Results" MODIFIED="1711987862123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

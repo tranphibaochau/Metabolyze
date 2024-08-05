@@ -6,9 +6,9 @@
   "script_file_suffix": "py",
   "parameters": [
     {
-      "name": "Input Folder",
+      "name": "Zip File",
       "type": "socket",
-      "socket_type": "many_to_one"
+      "socket_type": "one_to_one"
     },
     {
       "name": "Left Coordinate",
@@ -23,17 +23,21 @@
     {
       "name": "Right Coordinate",
       "type": "number",
-      "value": "50"
+      "value": "1800"
     },
     {
       "name": "Bottom Coordinate",
       "type": "number",
-      "value": "100"
+      "value": "1000"
     }
   ],
   "output_sockets": [
     {
       "name": "crop_img",
+      "socket_type": "one_to_many"
+    },
+    {
+      "name": "crop_img_zip",
       "socket_type": "one_to_many"
     }
   ]

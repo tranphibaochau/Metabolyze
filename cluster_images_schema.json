@@ -1,0 +1,25 @@
+{
+  "node_title": "cluster images",
+  "node_type": "dataProcessingNode",
+  "script_file_type": "python",
+  "command":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "images",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "correlations",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "iframe",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
