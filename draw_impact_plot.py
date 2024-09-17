@@ -5,8 +5,8 @@ import plotly
 import plotly.graph_objs as go
 
 
-
 def read_table_as_dataframe(input_file):
+
     try:
         df = pd.read_table(input_file, sep="\t")
         if len(df.columns) == 1 and len(df.columns[0].split(",")) > 1:
@@ -18,6 +18,8 @@ def read_table_as_dataframe(input_file):
     except Exception as e:
         print("Error occurred:", e)
     return df
+
+
 def draw_impact_plot(input_file, group_colors):
     df = read_table_as_dataframe(input_file)
     group_ids = read_table_as_dataframe(group_colors)
@@ -63,9 +65,6 @@ def draw_impact_plot(input_file, group_colors):
             f.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
 
 
-
-
-
-"""input_file = sys.argv[1]
-group_colors = sys.argv[2]"""
-draw_impact_plot("skeleton.quantified", "test_groups.tsv")
+input_file = sys.argv[1]
+group_colors = sys.argv[2]
+draw_impact_plot(input_file, group_colors)

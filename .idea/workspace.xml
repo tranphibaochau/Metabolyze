@@ -4,10 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Added script for clustering images">
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Fixed bugs">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_blank_threshold_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_blank_threshold_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_combined_mean_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_combined_mean_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_fold_change_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_fold_change_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_group_mean_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_group_mean_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_impact_score_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_impact_score_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/cluster_images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster_images_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/cluster_images_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert_column_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/convert_column_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert_column_name_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/convert_column_name_schema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crop_msi_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/crop_msi_images.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crop_msi_images_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/crop_msi_images_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_mgf_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/dewey_mgf_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/dewey_mspepsearch_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/dewey_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_heatmap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_heatmap_R_script.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_heatmap_schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_impact_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_impact_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_impact_plot_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/draw_impact_plot_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_volcano_plot_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/draw_volcano_plot_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flux_analysis_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/flux_analysis_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_masking.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_masking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_correlation_matrix.py" beforeDir="false" afterPath="$PROJECT_DIR$/img_correlation_matrix.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/impute_table_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/impute_table_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge_tables_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/merge_tables_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pca_plot_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/pca_plot_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/replace_values_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/replace_values_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/select_group_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/select_group_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/select_groups_for_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/select_groups_for_visualization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srm_normalization.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/t_test_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/t_test_schema.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +115,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Scripts/Metabolyze&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Scripts/scripts_for_combining_slides&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -332,7 +362,21 @@
       <workItem from="1721846987616" duration="3473000" />
       <workItem from="1722610693592" duration="5140000" />
       <workItem from="1722620131287" duration="5301000" />
-      <workItem from="1722810196998" duration="8858000" />
+      <workItem from="1722810196998" duration="8886000" />
+      <workItem from="1722872538616" duration="1903000" />
+      <workItem from="1722962450013" duration="598000" />
+      <workItem from="1723087471533" duration="591000" />
+      <workItem from="1723095048392" duration="372000" />
+      <workItem from="1723096557531" duration="16333000" />
+      <workItem from="1723472042816" duration="118000" />
+      <workItem from="1723559050950" duration="5000" />
+      <workItem from="1723647687986" duration="2881000" />
+      <workItem from="1723748011060" duration="3886000" />
+      <workItem from="1724851401792" duration="1318000" />
+      <workItem from="1724853690431" duration="843000" />
+      <workItem from="1725392932226" duration="1687000" />
+      <workItem from="1726163085407" duration="1262000" />
+      <workItem from="1726587339740" duration="286000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -502,7 +546,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722817970501</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Fixed bugs">
+      <option name="closed" value="true" />
+      <created>1722829223371</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1722829223371</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +588,8 @@
     <MESSAGE value="Added script to crop MSI images" />
     <MESSAGE value="Modify scripts to be able to run on the executive" />
     <MESSAGE value="Added script for clustering images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added script for clustering images" />
+    <MESSAGE value="Fixed bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_group_mean.coverage" NAME="calculate_group_mean Coverage Results" MODIFIED="1711987862123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

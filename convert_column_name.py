@@ -24,7 +24,7 @@ def convert_column_name(input_file, group_ids, name_to_id="True"):
     df = read_table_as_dataframe(input_file)
     group_df = read_table_as_dataframe(group_ids)
     # create a dictionary to convert column names based on Groups.tsv
-    if reverse == "True":
+    if name_to_id == "True":
         convert_names = dict([(key, value) for i, (key, value) in enumerate(zip(group_df['File'], group_df['id']))])
     else:
         convert_names = dict([(key, value) for i, (key, value) in enumerate(zip(group_df['id'], group_df['File']))])

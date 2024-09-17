@@ -84,5 +84,4 @@ group1 = sys.argv[3]
 group2 = sys.argv[4]
 select_groups(input_file, group_ids, group1, group2)
 
-#select_groups("skeleton.quantified", "test_groups.tsv", "Group_1", "media")
 

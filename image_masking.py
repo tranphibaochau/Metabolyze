@@ -16,7 +16,6 @@ def zip_folder(input_path, output_path):
 
 
 def mask_img(input_file):
-
     current_dir = os.getcwd()
     df = {}
     # extract all the file inside the zip file

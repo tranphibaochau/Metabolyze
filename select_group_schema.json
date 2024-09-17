@@ -1,8 +1,8 @@
 {
   "node_title": "Select Groups For Visualization",
   "node_type": "dataProcessingNode",
-  "script_file_type": "python",
-  "command":"python3",
+  "language": "python",
+  "interpreter":"python3",
   "script_file_suffix": "py",
   "parameters": [
     {

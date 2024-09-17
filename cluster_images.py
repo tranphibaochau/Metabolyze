@@ -23,21 +23,23 @@ image_zip_filename = sys.argv[1]
 correlations_filename = sys.argv[2]
 
 d = pd.read_csv(correlations_filename, sep="\t")
-d.set_index('mz_a', inplace=True)
+d.index = d.columns
+d = d.rename_axis('mz_a')
 d.columns.name = 'mz_b'
 
 zip_fnames = []
 zip_urls = []
 with zipfile.ZipFile(image_zip_filename, "r") as f:
         for fname in f.namelist():
-                zip_fnames.append(fname[:-4])
-                zip_binary = f.read(fname)
-                zip_base64_utf8_str = base64.b64encode(zip_binary).decode('utf-8')
-                zip_dataurl = f'data:image/png;base64,{zip_base64_utf8_str}'
-                zip_urls.append(zip_dataurl)
-print(zip_fnames, d.columns)
+                if fname.endswith("png"):
+                    name = fname.split("/")[-1]
+                    zip_fnames.append(name)
+                    zip_binary = f.read(fname)
+                    zip_base64_utf8_str = base64.b64encode(zip_binary).decode('utf-8')
+                    zip_dataurl = f'data:image/png;base64,{zip_base64_utf8_str}'
+                    zip_urls.append(zip_dataurl)
 for (x, y) in zip(zip_fnames, list(d.columns)):
-        assert(x == y)
+    assert(x == y)
 
 #Z = linkage(squareform(1-d))
 Z = linkage(1-d)
@@ -58,11 +60,8 @@ mz_a = list(d.index)
 mz_b = list(d.columns) # list(reversed(d.columns))
 
 mzs = []
-print(mz_a)
 
 for mz in mz_a:
-        print("dafuq:", mz)
-
         the_mz = mz.split('mz')[0]
         mzs.append(f"mz={the_mz}")
 
@@ -71,8 +70,8 @@ d = pd.DataFrame(d.stack(), columns=['correlation']).reset_index()
 d["imgs_a"] = d["mz_a"]
 d["imgs_b"] = d["mz_b"]
 
-d['mz_a_val'] = d.apply(lambda x: x['mz_a'].split("_")[1].split("(")[0], axis=1)
-d['mz_b_val'] = d.apply(lambda x: x['mz_b'].split("_")[1].split("(")[0], axis=1)
+d['mz_a_val'] = d.apply(lambda x: x['mz_a'].split(" ")[0], axis=1)
+d['mz_b_val'] = d.apply(lambda x: x['mz_b'].split(" ")[0], axis=1)
 
 
 # this is the colormap from the original NYTimes plot
@@ -169,3 +168,5 @@ for line in html.split("\n"):
         else:
                 print(line, file=f)
 f.close()
+
+

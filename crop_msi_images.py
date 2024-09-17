@@ -124,18 +124,21 @@ def crop_msi_images(x1=0, x2=0, x3=0, output_width=500, output_height=500):
                 right = coords["right_most"][0] + 20
                 bottom = coords["bottom_most"][1] + 20
                 cropped_img = img.crop((left, top, right, bottom))
-                # remember the image size we want to save
-                # if cropped image is bigger than the specified size, don't add black background to the image
-                size = max(output_width, output_height, cropped_img.width, cropped_img.height)
-                new_image = Image.new('RGB', (size, size), (0, 0, 0))
-                # Calculate the position to paste the original image onto the new image
-                paste_position = (
-                (size - cropped_img.width) // 2, (size - cropped_img.height) // 2)
-                # Paste the original image onto the new image
-                new_image.paste(cropped_img, paste_position)
-                new_image = new_image.thumbnail((500, 500))
-                print(f"Resized size: {new_image.size}")
-                new_image.save(f"{os.getcwd()}/output/crop_msi_images/{img_name}.png")
+                if output_width == 0 and output_height == 0:
+                    cropped_img.save(f"{os.getcwd()}/output/crop_msi_images/{img_name}.png")
+                else:
+                    # remember the image size we want to save
+                    # if cropped image is bigger than the specified size, don't add black background to the image
+                    size = max(output_width, output_height, cropped_img.width, cropped_img.height)
+                    new_image = Image.new('RGB', (size, size), (0, 0, 0))
+                    # Calculate the position to paste the original image onto the new image
+                    paste_position = (
+                    (size - cropped_img.width) // 2, (size - cropped_img.height) // 2)
+                    # Paste the original image onto the new image
+                    new_image.paste(cropped_img, paste_position)
+                    new_image = new_image.thumbnail((500, 500))
+                    print(f"Resized size: {new_image.size}")
+                    new_image.save(f"{os.getcwd()}/output/crop_msi_images/{img_name}.png")
     shutil.rmtree(input_folder)  # remove the unzipped folder afterwards
 # Example usage
 crop_msi_images(x1, x2, x3, output_width, output_height)
