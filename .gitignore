@@ -9,5 +9,6 @@
 *.xlsx
 *.features
 *.mgf
+*.sqlite3
 .idea/
 output/

@@ -2,7 +2,7 @@ import tarfile
 import sys
 import subprocess
 import os
-# output: .features
+from pathlib import Path
 
 #
 # Actual code begins here...
@@ -15,32 +15,29 @@ hi_res_search_options = sys.argv[4]
 lo_res_search_type = sys.argv[5]
 presearch_type = sys.argv[6]
 additional_options = sys.argv[7]
-files = os.listdir(library_path)
+path = Path(library_path)
 
 directories = []
 libraries = []
 # Iterate through each file
-for file in files:
-    # Check if the file is a tar file
-    if file.endswith('.tar'):
-        # Create a full path to the tar file
-        tar_file = os.path.join(library_path, file)
-
-
-        # Open the tar file
-        with tarfile.open(tar_file, 'r') as tar:
-            extract_folder = tar.getmembers()[0].name
-            if not os.path.exists(os.path.join(library_path, extract_folder)):
-                # Extract all contents
-                tar.extractall(path=library_path)
-            for folder in tar.getmembers():
-                # Check if the member is a directory
-                if folder.isdir():
-                    # add the folders into the libraries
-                    libraries.append(folder.name.split("/")[-1])
-                    directories.append(os.path.join(library_path, folder.name))
-
-
+if os.path.isdir(path):
+    for folder in path.rglob('*'):
+        if folder.is_dir():
+            libraries.append(folder.name.split("/")[-1])
+            directories.append(os.path.join(library_path, folder.name))
+elif path.suffix == ".tar":
+    # Open the tar file
+    with tarfile.open(path, 'r') as tar:
+        extract_folder = tar.getmembers()[0].name
+        current_folder = Path("\\".join(library_path.split("\\")[:-1]))
+        print("current_folder", current_folder)
+        tar.extractall(path=current_folder)
+        for folder in tar.getmembers():
+            # Check if the member is a directory
+            if folder.isdir():
+                # add the folders into the libraries
+                libraries.append(folder.name.split("/")[-1])
+                directories.append(os.path.join(current_folder, folder.name))
 paths = {}
 for i in range(len(libraries)):
     paths[libraries[i]] = directories[i]
@@ -61,15 +58,15 @@ if presearch_type != 'None':
 if additional_options != "None":
     subprocess_command.extend(additional_options.split(" "))
 
-
-subprocess_command.extend(["/INP", seq_name]) # add input
+print(paths)
+subprocess_command.extend(["/INP", seq_name])  # add input
 if 'nist_msms' not in paths:
     raise Exception('nist_msms not found in directories. Please import nist_msms')
 for dir in directories[1:-1]:
-    subprocess_command.extend(["/LIB", dir]) # specify input and output files
+    subprocess_command.extend(["/LIB", dir])  # specify input and output files
 subprocess_command.extend(["/OUTTAB", f"{os.getcwd()}/output.txt"])
-subprocess.run(subprocess_command, stdout=subprocess.DEVNULL)
-#subprocess.run(["wine", f"{paths['MSPepSearch_x64']}/MSPepSearch.exe", "d", "a", "v", "l", "G", "/Z", "0.01", "/M", "0.05", "/INP", seq_name] + ["/LIB", f"{paths['nist_msms']}"] + ["/OUTTAB", f"{os.getcwd()}/output/mspepsearch/potato.txt"], stdout=subprocess.DEVNULL)
+subprocess.run([f"{paths['MSPepSearch_x64']}/MSPepSearch64.exe", "d", "a", "v", "l", "G", "/Z", "0.01", "/M", "0.05", "/INP", seq_name] + ["/LIB", f"{paths['MSP_Libraries']}"] + ["/OUTTAB", f"{os.getcwd()}/output/mspepsearch/potato.txt"], stdout=subprocess.DEVNULL)
+
 print("", file=sys.stderr, flush=True)
 print("----------------", file=sys.stderr, flush=True)
 print("", file=sys.stderr, flush=True)
