@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Modified format of the schema files">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Modified dewey to accept a custom library">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/dewey_mspepsearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_mgf_generation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_mgf_schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch_schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dewey_schema.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +351,11 @@
       <workItem from="1725392932226" duration="1687000" />
       <workItem from="1726163085407" duration="1262000" />
       <workItem from="1726587339740" duration="1473000" />
-      <workItem from="1727099031266" duration="11166000" />
+      <workItem from="1727099031266" duration="12237000" />
+      <workItem from="1727278928538" duration="6250000" />
+      <workItem from="1727300654176" duration="4000" />
+      <workItem from="1727361834730" duration="1116000" />
+      <workItem from="1727805390418" duration="661000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -533,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726587691591</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Modified dewey to accept a custom library">
+      <option name="closed" value="true" />
+      <created>1727188186251</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1727188186251</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +585,8 @@
     <MESSAGE value="Added script for clustering images" />
     <MESSAGE value="Fixed bugs" />
     <MESSAGE value="Modified format of the schema files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified format of the schema files" />
+    <MESSAGE value="Modified dewey to accept a custom library" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified dewey to accept a custom library" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_group_mean.coverage" NAME="calculate_group_mean Coverage Results" MODIFIED="1711987862123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
