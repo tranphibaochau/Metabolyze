@@ -1,0 +1,6 @@
+/output/
+*.tsv
+*.xml
+*.quantified
+*.txt
+*.html

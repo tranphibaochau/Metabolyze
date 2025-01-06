@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Moved dewey to another repo and added script to make MSI image from mz mobility values">
-      <change afterPath="$PROJECT_DIR$/interactive_coding.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Groups.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/Groups.tsv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draw_volcano_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_volcano_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heatmap.R" beforeDir="false" afterPath="$PROJECT_DIR$/heatmap.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heatmap_R_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/heatmap_R_schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/select_groups_for_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/select_groups_for_visualization.py" afterDir="false" />
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Add script to read zip file and find leaf directories">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/interactive_coding-checkpoint.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,60 +40,63 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2cSLoFEQLGV6ZxsdW6gd8K0iDHQ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.basalt.executor&quot;: &quot;Run&quot;,
-    &quot;Python.blank_threshold.executor&quot;: &quot;Run&quot;,
-    &quot;Python.blank_threshold_correction.executor&quot;: &quot;Run&quot;,
-    &quot;Python.calculate_blank_threshold.executor&quot;: &quot;Run&quot;,
-    &quot;Python.calculate_combined_mean.executor&quot;: &quot;Run&quot;,
-    &quot;Python.calculate_fold_change.executor&quot;: &quot;Run&quot;,
-    &quot;Python.columns_merge.executor&quot;: &quot;Run&quot;,
-    &quot;Python.crop_img.executor&quot;: &quot;Run&quot;,
-    &quot;Python.crop_msi_images.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dewey.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dewey_a4e87d3c51c1b68addab8168bac79ea3.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dewey_mgf_generation.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dewey_mspepsearch.executor&quot;: &quot;Run&quot;,
-    &quot;Python.draw_heatmap.executor&quot;: &quot;Run&quot;,
-    &quot;Python.draw_heatmap_R_script.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.draw_impact_plot.executor&quot;: &quot;Run&quot;,
-    &quot;Python.draw_pca_graph.executor&quot;: &quot;Run&quot;,
-    &quot;Python.draw_volcano_plot.executor&quot;: &quot;Run&quot;,
-    &quot;Python.get_group_ids.executor&quot;: &quot;Run&quot;,
-    &quot;Python.impute_blank_threshold.executor&quot;: &quot;Run&quot;,
-    &quot;Python.impute_table.executor&quot;: &quot;Run&quot;,
-    &quot;Python.merge_tables.executor&quot;: &quot;Run&quot;,
-    &quot;Python.merge_tables_multiple.executor&quot;: &quot;Run&quot;,
-    &quot;Python.metabolyze.executor&quot;: &quot;Run&quot;,
-    &quot;Python.metabolyze_original.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pca_analysis.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pearson_correlation.executor&quot;: &quot;Run&quot;,
-    &quot;Python.reshuffle_col.executor&quot;: &quot;Run&quot;,
-    &quot;Python.select_columns.executor&quot;: &quot;Run&quot;,
-    &quot;Python.select_groups_for_visualization.executor&quot;: &quot;Run&quot;,
-    &quot;Python.srm_normalization (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.srm_normalization.executor&quot;: &quot;Run&quot;,
-    &quot;Python.t_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Scripts/scripts_for_combining_slides&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.basalt.executor": "Run",
+    "Python.blank_threshold.executor": "Run",
+    "Python.blank_threshold_correction.executor": "Run",
+    "Python.calculate_blank_threshold.executor": "Run",
+    "Python.calculate_combined_mean.executor": "Run",
+    "Python.calculate_fold_change.executor": "Run",
+    "Python.columns_merge.executor": "Run",
+    "Python.crop_img.executor": "Run",
+    "Python.crop_msi_images.executor": "Run",
+    "Python.dewey.executor": "Run",
+    "Python.dewey_a4e87d3c51c1b68addab8168bac79ea3.executor": "Run",
+    "Python.dewey_mgf_generation.executor": "Run",
+    "Python.dewey_mspepsearch.executor": "Run",
+    "Python.draw_heatmap.executor": "Run",
+    "Python.draw_heatmap_R_script.executor": "Debug",
+    "Python.draw_impact_plot.executor": "Run",
+    "Python.draw_pca_graph.executor": "Run",
+    "Python.draw_volcano_plot.executor": "Run",
+    "Python.get_group_ids.executor": "Run",
+    "Python.impute_blank_threshold.executor": "Run",
+    "Python.impute_table.executor": "Run",
+    "Python.merge_tables.executor": "Run",
+    "Python.merge_tables_multiple.executor": "Run",
+    "Python.metabolyze.executor": "Run",
+    "Python.metabolyze_original.executor": "Run",
+    "Python.pca_analysis.executor": "Run",
+    "Python.pearson_correlation.executor": "Run",
+    "Python.reshuffle_col.executor": "Run",
+    "Python.select_columns.executor": "Run",
+    "Python.select_groups_for_visualization.executor": "Run",
+    "Python.srm_normalization (1).executor": "Run",
+    "Python.srm_normalization.executor": "Run",
+    "Python.t_test.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Scripts/Metabolyze",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Scripts\Metabolyze" />
@@ -365,6 +363,7 @@
       <workItem from="1733763468689" duration="5171000" />
       <workItem from="1733932663026" duration="8817000" />
       <workItem from="1734013074598" duration="182000" />
+      <workItem from="1736180634309" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -566,7 +565,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727971623870</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Add script to read zip file and find leaf directories">
+      <option name="closed" value="true" />
+      <created>1736180882376</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1736180882376</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -584,6 +591,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial push" />
     <MESSAGE value="Break down scripts into smaller functions" />
     <MESSAGE value="Added scripts to calculate t-test and pearson correlation" />
@@ -604,7 +612,8 @@
     <MESSAGE value="Modified format of the schema files" />
     <MESSAGE value="Modified dewey to accept a custom library" />
     <MESSAGE value="Moved dewey to another repo and added script to make MSI image from mz mobility values" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved dewey to another repo and added script to make MSI image from mz mobility values" />
+    <MESSAGE value="Add script to read zip file and find leaf directories" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add script to read zip file and find leaf directories" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -641,7 +650,7 @@
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_blank_threshold.coverage" NAME="calculate_blank_threshold Coverage Results" MODIFIED="1714610183082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$draw_impact_plot.coverage" NAME="draw_impact_plot Coverage Results" MODIFIED="1712898046272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$reshuffle_col.coverage" NAME="reshuffle_col Coverage Results" MODIFIED="1709744745707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Metabolyze$metabolyze_original.coverage" NAME="metabolyze_original Coverage Results" MODIFIED="1709744307707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/Metabolyze" />
+    <SUITE FILE_PATH="coverage/Metabolyze$metabolyze_original.coverage" NAME="metabolyze_original Coverage Results" MODIFIED="1736180706009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$crop_img.coverage" NAME="crop_img Coverage Results" MODIFIED="1721848341306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Metabolyze$basalt.coverage" NAME="basalt Coverage Results" MODIFIED="1720446077908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/complete_workflow/complete_workflow/output/xtream/output/bg_xtream" />
     <SUITE FILE_PATH="coverage/Metabolyze$impute_table.coverage" NAME="impute_table Coverage Results" MODIFIED="1713195628907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
