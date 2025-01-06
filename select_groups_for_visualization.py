@@ -1,9 +1,9 @@
 import pandas as pd
 import sys
 import os
-import subprocess as sp
 import warnings
 import itertools
+
 
 def read_table_as_dataframe(input_file):
     try:
@@ -18,8 +18,8 @@ def read_table_as_dataframe(input_file):
         print("Error occurred:", e)
     return df
 def select_groups(input_file, group_ids, group1="All", group2="All"):
-    def get_group_names(input):
-        groups = pd.read_table(input, sep="\t")
+    def get_group_names(input_file):
+        groups = read_table_as_dataframe(input_file)
         group_dict = {}
         unique_groups = [x for x in groups.Group.unique() if x != "Blank"]
         for n in unique_groups:
@@ -33,7 +33,6 @@ def select_groups(input_file, group_ids, group1="All", group2="All"):
     group_df = read_table_as_dataframe(group_ids)
     # get dictionary of group name and corresponding columns
     group_dict = get_group_names(group_ids)
-
     # pick a color for each group for visualization
     group_df['Color'] = 'NA'
     colors = ['#FF0000', '#0000FF', '#000000', '#008000', '#FFFF00', '#800080', '#FFC0CB', "#c0feff", "#5b2d8c",
@@ -57,25 +56,26 @@ def select_groups(input_file, group_ids, group1="All", group2="All"):
     p_value_col = group1.replace(" ", "_") + "_vs_" + group2.replace(" ", "_") + "_ttest_pval"
     impact_col = group1.replace(" ", "_") + "_vs_" + group2.replace(" ", "_") + "_impact_score"
     logfoldchange_col = group1.replace(" ", "_") + "_vs_" + group2.replace(" ", "_") + "_Log2FoldChange"
-
     statistics_col = []
-    col_name_change = {}
     if p_value_col in df.columns:
         statistics_col.append(p_value_col)
-        col_name_change[p_value_col] ="ttest_pval"
+    else:
+        warnings.warn(f"{p_value_col} not found in input_file!", category=UserWarning)
     if impact_col in df.columns:
         statistics_col.append(impact_col)
-        col_name_change[impact_col] = "impact_score"
+    else:
+        warnings.warn(f"{impact_col} not found in input_file!", category=UserWarning)
     if logfoldchange_col in df.columns:
         statistics_col.append(logfoldchange_col)
-        col_name_change[logfoldchange_col] = "Log2FoldChange"
-
+    else:
+        warnings.warn(f"{impact_col} not found in input_file!", category=UserWarning)
     grp1_cols = [x[1] for x in group_dict[group1]]
     grp2_cols = [x[1] for x in group_dict[group2]]
     comparison_df = df[itertools.chain(['Metabolite', 'Formula', 'RT'], grp1_cols, grp2_cols, statistics_col)]
-    comparison_df.rename(columns=col_name_change, inplace=True)
-    comparison_df.to_csv(f"{os.getcwd()}/output/selected_groups/output.tsv", sep="\t", index=False)
-    group_df.to_csv(f"{os.getcwd()}/output/group_colors/groups.tsv", sep="\t", index=False)
+    comparison_df.to_csv(f"{os.getcwd()}/select_groups_output.tsv", sep="\t", index=False)
+    if group1 != "All":
+        group_df = group_df[group_df['Group'].isin([group1, group2])]
+    group_df.to_csv(f"{os.getcwd()}/groups_output.tsv", sep="\t", index=False)
 
 
 input_file = sys.argv[1]

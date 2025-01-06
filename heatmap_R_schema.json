@@ -1,8 +1,8 @@
 {
   "node_title": "Heatmap (R) - Two Groups",
   "node_type": "dataProcessingNode",
-  "script_file_type": "R",
-  "command": "Rscript",
+  "language": "R",
+  "interpreter": "Rscript",
   "script_file_suffix": "R",
   "parameters": [
     {

@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Modified dewey to accept a custom library">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+    <list default="true" id="3b72846d-022b-4541-9c50-2d0b51d88491" name="Changes" comment="Moved dewey to another repo and added script to make MSI image from mz mobility values">
+      <change afterPath="$PROJECT_DIR$/interactive_coding.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dewey_mgf_generation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dewey_mgf_schema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dewey_mspepsearch_schema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dewey_schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Groups.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/Groups.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_volcano_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_volcano_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heatmap.R" beforeDir="false" afterPath="$PROJECT_DIR$/heatmap.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heatmap_R_schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/heatmap_R_schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/select_groups_for_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/select_groups_for_visualization.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Unit Test" />
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -105,7 +105,7 @@
       <recent name="C:\Users\cpt289\AppData\Local\Temp\scp16302\home\ubuntu\users\chau\Metabolyze" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.crop_img">
+  <component name="RunManager" selected="Python.metabolyze_original">
     <configuration name="basalt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
@@ -198,7 +198,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="metabolyze_original" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Metabolyze" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -212,7 +212,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/metabolyze_original.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -223,18 +223,18 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.metabolyze_original" />
         <item itemvalue="Python.crop_img" />
         <item itemvalue="Python.crop_msi_images" />
         <item itemvalue="Python.basalt" />
         <item itemvalue="Python.dewey_mspepsearch" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
+        <option value="bundled-python-sdk-c69650fc56ca-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.15619.17" />
       </set>
     </attachedChunks>
   </component>
@@ -356,6 +356,15 @@
       <workItem from="1727300654176" duration="4000" />
       <workItem from="1727361834730" duration="1116000" />
       <workItem from="1727805390418" duration="661000" />
+      <workItem from="1727971561722" duration="677000" />
+      <workItem from="1728315121515" duration="883000" />
+      <workItem from="1728316086249" duration="2468000" />
+      <workItem from="1728577036927" duration="5000" />
+      <workItem from="1728589536040" duration="3437000" />
+      <workItem from="1729178429996" duration="52000" />
+      <workItem from="1733763468689" duration="5171000" />
+      <workItem from="1733932663026" duration="8817000" />
+      <workItem from="1734013074598" duration="182000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <option name="closed" value="true" />
@@ -549,7 +558,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727188186251</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Moved dewey to another repo and added script to make MSI image from mz mobility values">
+      <option name="closed" value="true" />
+      <created>1727971623870</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1727971623870</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +603,18 @@
     <MESSAGE value="Fixed bugs" />
     <MESSAGE value="Modified format of the schema files" />
     <MESSAGE value="Modified dewey to accept a custom library" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified dewey to accept a custom library" />
+    <MESSAGE value="Moved dewey to another repo and added script to make MSI image from mz mobility values" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved dewey to another repo and added script to make MSI image from mz mobility values" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/select_groups_for_visualization.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Metabolyze$calculate_group_mean.coverage" NAME="calculate_group_mean Coverage Results" MODIFIED="1711987862123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

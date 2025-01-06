@@ -37,11 +37,11 @@ def draw_volcano_plot(input_file, significance_threshold=0.05, fold_change_thres
         for i, c in enumerate(col_ttest_pval):
             new_df = df[df[c].notna()]
             new_df.reset_index(inplace=True)
-            if len(col_ttest_pval) > 1:
-                title = "Volcano Plot: " + c.split("_ttest_pval")[0]
-                new_df.rename(
-                    columns={c: "ttest_pval", "".join([c.split("_ttest")[0], "_Log2FoldChange"]): "Log2FoldChange"},
-                    inplace=True)
+
+            title = "Volcano Plot: " + c.split("_ttest_pval")[0]
+            new_df.rename(
+                columns={c: "ttest_pval", "".join([c.split("_ttest")[0], "_Log2FoldChange"]): "Log2FoldChange"},
+                inplace=True)
 
             new_df['-log10(p_value)'] = -1 * np.log10(new_df['ttest_pval'])
             new_df['color'] = ((new_df['-log10(p_value)'] > -np.log10(significance_threshold)) &

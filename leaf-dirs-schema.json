@@ -1,0 +1,20 @@
+{
+  "node_title": "Leaf Directory Finder",
+  "node_type": "dataProcessingNode",
+  "language": "python",
+  "interpreter": "python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "leaf_dirs",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
