@@ -1,0 +1,35 @@
+{
+  "node_title": "Dewey MSPepsearch",
+  "node_type": "dataProcessingNode",
+  "language": "python",
+  "interpreter":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "MS Libraries (folder or .tar)",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "MSPepsearch program (folder or .tar)",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": ".mgf input file",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "MSPepSearch parameters",
+      "type": "text",
+      "value": "d a v l G /Z 0.01 /M 0.05 /MatchPolarity"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "mspepsearch",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

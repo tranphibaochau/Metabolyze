@@ -1,0 +1,20 @@
+{
+  "node_title": "Image Normalizer",
+  "node_type": "dataProcessingNode",
+  "language": "python",
+  "interpreter": "python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input Directory",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "normalized_images",
+      "socket_type": "one_to_many"
+    }
+  ]
+}

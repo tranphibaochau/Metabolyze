@@ -1,42 +1,50 @@
 import sys
 import os
 import zipfile
+import tarfile
+import gzip
+import shutil
 from pathlib import Path
+
+def extract_archive(input_file, temp_dir):
+    """Extract compressed file based on extension"""
+    if input_file.endswith('.zip'):
+        with zipfile.ZipFile(input_file, 'r') as zip_ref:
+            zip_ref.extractall(temp_dir)
+    elif input_file.endswith('.tar'):
+        with tarfile.open(input_file, 'r') as tar_ref:
+            tar_ref.extractall(temp_dir)
+    elif input_file.endswith('.gz'):
+        output_path = temp_dir / Path(input_file).stem
+        with gzip.open(input_file, 'rb') as f_in:
+            with open(output_path, 'wb') as f_out:
+                shutil.copyfileobj(f_in, f_out)
+    else:
+        raise ValueError(f"Unsupported file format: {input_file}")
 
 def get_leaf_directories(input_file):
     """
-    Extract zip file and return list of leaf directories (dirs with no subdirs)
+    Extract compressed file and return list of leaf directories
     
     Args:
-        input_file (str): Path to input zip file
+        input_file (str): Path to compressed file (.zip, .tar, .gz)
     
     Returns:
         list: List of leaf directory paths
     """
-    # Create temp directory for extraction
     temp_dir = Path(f"{os.getcwd()}/temp")
     temp_dir.mkdir(exist_ok=True)
     
-    # Extract zip contents
-    with zipfile.ZipFile(input_file, 'r') as zip_ref:
-        zip_ref.extractall(temp_dir)
+    extract_archive(input_file, temp_dir)
     
     leaf_dirs = []
-    
-    # Walk through directory tree
     for root, dirs, files in os.walk(temp_dir):
-        if not dirs:  # If no subdirectories, this is a leaf
+        if not dirs:
             leaf_dirs.append(os.path.relpath(root, temp_dir))
             
-    # Clean up temp directory
-    for root, dirs, files in os.walk(temp_dir, topdown=False):
-        for name in files:
-            os.remove(os.path.join(root, name))
-        for name in dirs:
-            os.rmdir(os.path.join(root, name))
-    temp_dir.rmdir()
+    # Cleanup
+    shutil.rmtree(temp_dir)
     
-    # Write results to output file
     output_dir = Path(f"{os.getcwd()}/output/leaf_dirs")
     output_dir.mkdir(parents=True, exist_ok=True)
     

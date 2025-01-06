@@ -4,3 +4,6 @@
 *.quantified
 *.txt
 *.html
+/SQ1631_images/
+*.jpg
+*.png
