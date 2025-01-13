@@ -1,5 +1,5 @@
 {
-  "node_title": "Image Normalizer",
+  "node_title": "Normalize Pixel Intensity",
   "node_type": "dataProcessingNode",
   "language": "python",
   "interpreter": "python3",
