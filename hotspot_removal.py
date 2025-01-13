@@ -59,5 +59,5 @@ def hotspot_removal(input_file, confidence):
 
 input_file = sys.argv[1]
 confidence = float(sys.argv[2])
-output_df = hotspot_removal(input_file)
+output_df = hotspot_removal(input_file, confidence)
 output_df.to_csv(f"{os.getcwd()}/output/hotspot_removal/hotspot_removal_output.tsv", sep="\t", index=False)
