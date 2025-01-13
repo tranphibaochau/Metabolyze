@@ -1,0 +1,25 @@
+{
+  "node_title": "Hotspot Removal",
+  "node_type": "dataProcessingNode",
+  "language": "python",
+  "interpreter":"python3",
+  "script_file_suffix": "py",
+  "parameters": [
+    {
+      "name": "Input File",
+      "type": "socket",
+      "socket_type": "one_to_one"
+    },
+    {
+      "name": "Confidence (between 0 and 1.0)",
+      "type": "number",
+      "value": "0.95"
+    }
+  ],
+  "output_sockets": [
+    {
+      "name": "hotspot_removal",
+      "socket_type": "one_to_many"
+    }
+  ]
+}
